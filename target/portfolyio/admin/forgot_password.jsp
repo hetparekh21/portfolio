@@ -1,4 +1,4 @@
-<!-- create a modal in html using bootstrap to login -->
+<%@ page isELIgnored = "false" %><!-- create a modal in html using bootstrap to login -->
 <!DOCTYPE html>
 <%@page import="javax.naming.Context"%>
 <%@page import="javax.swing.text.AbstractDocument.Content"%>
