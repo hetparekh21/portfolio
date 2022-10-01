@@ -1,4 +1,4 @@
-<!DOCTYPE web-app PUBLIC
+	<!DOCTYPE web-app PUBLIC
  "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
@@ -78,7 +78,7 @@
 	</servlet-mapping>
 
 	<welcome-file-list>
-		<welcome-file>admin/index.jsp</welcome-file>
+		<welcome-file>welcome.jsp</welcome-file>
 	</welcome-file-list>
 
 

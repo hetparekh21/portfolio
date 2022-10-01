@@ -11,350 +11,355 @@ import java.sql.SQLException;
 
 public class data {
 
-    public static String local_url , local_user , local_password ;
+
+//  Connection c = DriverManager.getConnection("jdbc:mysql://51.79.192.74:3306/solvejet_portfolio",
+//          "solvejet_Admin", "Admin@2022");
     
-	public static String getMd5(String input) {
-		try {
+    static String dbName = "portfolio", host = "localhost",
+            port = "3306";
+    
+    public static String url = "jdbc:mysql://" + host + ":" + port + "/" + dbName , user = "root", password = "root";;
 
-			MessageDigest md = MessageDigest.getInstance("SHA-1");
-			byte[] messageDigest = md.digest(input.getBytes());
+    public static String getMd5(String input) {
+        try {
 
-			BigInteger no = new BigInteger(1, messageDigest);
+            MessageDigest md = MessageDigest.getInstance("SHA-1");
+            byte[] messageDigest = md.digest(input.getBytes());
 
-			String hashtext = no.toString(16);
+            BigInteger no = new BigInteger(1, messageDigest);
 
-			return hashtext;
-		}
+            String hashtext = no.toString(16);
 
-		// For specifying wrong message digest algorithms
-		catch (NoSuchAlgorithmException e) {
-			throw new RuntimeException(e);
-		}
-	}
+            return hashtext;
+        }
 
-	public static Connection connect() throws ClassNotFoundException, SQLException {
-		Class.forName("com.mysql.cj.jdbc.Driver");
+        // For specifying wrong message digest algorithms
+        catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-//		Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/portfolio", "root", "root");
+    public static Connection connect() throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
 
-		Connection c = DriverManager.getConnection("jdbc:mysql://51.79.192.74:3306/solvejet_portfolio",
-				"solvejet_Admin", "Admin@2022");
-		return c;
-	}
+        Connection c = DriverManager.getConnection(url, user , password);
+        
+        return c;
+    }
 
-	public static user get_person(String email, String password) {
+    public static user get_person(String email, String password) {
 
-		user p = null;
-		ResultSet rs = null;
-		ResultSet rts = null;
+        user p = null;
+        ResultSet rs = null;
+        ResultSet rts = null;
 
-		try {
-			// creating statement
-			Connection c = connect();
-			PreparedStatement s = c.prepareStatement("SELECT * FROM user where email = ? AND pass = ?");
-			s.setString(1, email);
-			s.setString(2, getMd5(password));
-			rs = s.executeQuery();
+        try {
+            // creating statement
+            Connection c = connect();
+            PreparedStatement s = c.prepareStatement("SELECT * FROM user where email = ? AND pass = ?");
+            s.setString(1, email);
+            s.setString(2, getMd5(password));
+            rs = s.executeQuery();
 
-			rs = s.executeQuery();
+            rs = s.executeQuery();
 
-			if (rs == null) {
+            if (rs == null) {
 
-				return null;
+                return null;
 
-			}
+            }
 
-			while (rs.next()) {
+            while (rs.next()) {
 
-				p = new user();
-				p.setEmail(rs.getString("email"));
-				p.setPass(rs.getString("pass"));
-				p.setName(rs.getString("username"));
+                p = new user();
+                p.setEmail(rs.getString("email"));
+                p.setPass(rs.getString("pass"));
+                p.setName(rs.getString("username"));
 
-				break;
+                break;
 
-			}
+            }
 
-		} catch (Exception e) {
+        } catch (Exception e) {
 
-			System.out.println(e);
+            System.out.println(e);
 
-		} finally {
+        } finally {
 
-			try {
-				rs.close();
-			} catch (NullPointerException | SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				return null;
-			}
+            try {
+                rs.close();
+            } catch (NullPointerException | SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                return null;
+            }
 
-		}
+        }
 
-		return p;
+        return p;
 
-	}
+    }
 
-	public static user get_person(String email) {
+    public static user get_person(String email) {
 
-		user p = null;
-		ResultSet rs = null;
-		ResultSet rts = null;
+        user p = null;
+        ResultSet rs = null;
+        ResultSet rts = null;
 
-		try {
+        try {
 
-			Connection c = connect();
-			// creating statement
-			PreparedStatement s = c.prepareStatement("SELECT * FROM user where email = ?");
-			s.setString(1, email);
+            Connection c = connect();
+            // creating statement
+            PreparedStatement s = c.prepareStatement("SELECT * FROM user where email = ?");
+            s.setString(1, email);
 
-			rs = s.executeQuery();
+            rs = s.executeQuery();
 
-			rs = s.executeQuery();
+            rs = s.executeQuery();
 
-			if (rs == null) {
+            if (rs == null) {
 
-				return null;
+                return null;
 
-			}
+            }
 
-			while (rs.next()) {
+            while (rs.next()) {
 
-				p = new user();
-				p.setEmail(rs.getString("email"));
-				p.setPass(rs.getString("pass"));
-				p.setName(rs.getString("username"));
-				p.setUser_id(rs.getInt("id"));
+                p = new user();
+                p.setEmail(rs.getString("email"));
+                p.setPass(rs.getString("pass"));
+                p.setName(rs.getString("username"));
+                p.setUser_id(rs.getInt("id"));
 
-				break;
+                break;
 
-			}
+            }
 
-		} catch (Exception e) {
+        } catch (Exception e) {
 
-			System.out.println(e);
+            System.out.println(e);
 
-		} finally {
+        } finally {
 
-			try {
-				rs.close();
-			} catch (NullPointerException | SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				return null;
-			}
+            try {
+                rs.close();
+            } catch (NullPointerException | SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                return null;
+            }
 
-		}
+        }
 
-		return p;
+        return p;
 
-	}
+    }
 
-	public static user get_person(int id) {
+    public static user get_person(int id) {
 
-		user p = null;
-		ResultSet rs = null;
-		ResultSet rts = null;
+        user p = null;
+        ResultSet rs = null;
+        ResultSet rts = null;
 
-		try {
-			Connection c = connect();
-			// creating statement
-			PreparedStatement s = c.prepareStatement("SELECT * FROM user where id = ?");
-			s.setInt(1, id);
+        try {
+            Connection c = connect();
+            // creating statement
+            PreparedStatement s = c.prepareStatement("SELECT * FROM user where id = ?");
+            s.setInt(1, id);
 
-			rs = s.executeQuery();
+            rs = s.executeQuery();
 
-			rs = s.executeQuery();
+            rs = s.executeQuery();
 
-			if (rs == null) {
+            if (rs == null) {
 
-				return null;
+                return null;
 
-			}
+            }
 
-			while (rs.next()) {
+            while (rs.next()) {
 
-				p = new user();
-				p.setEmail(rs.getString("email"));
-				p.setPass(rs.getString("pass"));
-				p.setName(rs.getString("username"));
-				p.setUser_id(rs.getInt("id"));
+                p = new user();
+                p.setEmail(rs.getString("email"));
+                p.setPass(rs.getString("pass"));
+                p.setName(rs.getString("username"));
+                p.setUser_id(rs.getInt("id"));
 
-				break;
+                break;
 
-			}
+            }
 
-		} catch (Exception e) {
+        } catch (Exception e) {
 
-			System.out.println(e);
+            System.out.println(e);
 
-		} finally {
+        } finally {
 
-			try {
-				rs.close();
-			} catch (NullPointerException | SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				return null;
-			}
+            try {
+                rs.close();
+            } catch (NullPointerException | SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                return null;
+            }
 
-		}
+        }
 
-		return p;
+        return p;
 
-	}
+    }
 
-	public static user get_person(String email, String hobby, String nickname, String DOB) {
+    public static user get_person(String email, String hobby, String nickname, String DOB) {
 
-		user p = null;
-		ResultSet rs = null;
+        user p = null;
+        ResultSet rs = null;
 
-		try {
-			Connection c = connect();
-			// creating statement
-			PreparedStatement s = c.prepareStatement(
-					"select s.id, s.email from security_questions sq , user s where s.email = ? and hobby = ? and nickname = ? and DOB = ? and s.id = sq.user_id ;");
-			s.setString(1, email);
-			s.setString(2, hobby);
-			s.setString(3, nickname);
-			s.setString(4, DOB);
+        try {
+            Connection c = connect();
+            // creating statement
+            PreparedStatement s = c.prepareStatement(
+                    "select s.id, s.email from security_questions sq , user s where s.email = ? and hobby = ? and nickname = ? and DOB = ? and s.id = sq.user_id ;");
+            s.setString(1, email);
+            s.setString(2, hobby);
+            s.setString(3, nickname);
+            s.setString(4, DOB);
 
-			System.out.println(s.toString());
+            System.out.println(s.toString());
 
-			rs = s.executeQuery();
+            rs = s.executeQuery();
 
-			while (rs.next()) {
+            while (rs.next()) {
 
-				p = new user();
-				p.setUser_id(rs.getInt("s.id"));
-				p.setEmail(rs.getString("s.email"));
+                p = new user();
+                p.setUser_id(rs.getInt("s.id"));
+                p.setEmail(rs.getString("s.email"));
 
-				System.out.println("id is " + p.user_id + "email is " + p.email);
+                System.out.println("id is " + p.user_id + "email is " + p.email);
 
-				break;
+                break;
 
-			}
+            }
 
-		} catch (Exception e) {
+        } catch (Exception e) {
 
-			System.out.println(e);
+            System.out.println(e);
 
-		} finally {
+        } finally {
 
-			try {
-				rs.close();
-			} catch (NullPointerException | SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				return null;
-			}
+            try {
+                rs.close();
+            } catch (NullPointerException | SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                return null;
+            }
 
-		}
+        }
 
-		return p;
+        return p;
 
-	}
+    }
 
-	public static void insert_person(user per, boolean sign_up) {
+    public static void insert_person(user per, boolean sign_up) {
 
-		try {
-			Connection c = connect();
-			PreparedStatement s;
+        try {
+            Connection c = connect();
+            PreparedStatement s;
 
-			if (sign_up) {
+            if (sign_up) {
 
-				s = c.prepareStatement("insert into user(email , pass , username) values(?,?,?)");
+                s = c.prepareStatement("insert into user(email , pass , username) values(?,?,?)");
 
-				s.setString(1, per.email);
-				s.setString(2, getMd5(per.pass));
-				s.setString(3, per.name);
+                s.setString(1, per.email);
+                s.setString(2, getMd5(per.pass));
+                s.setString(3, per.name);
 
-			} else {
+            } else {
 
-				s = c.prepareStatement("insert into user(email , pass) values(?,?)");
-				s.setString(1, per.email);
-				s.setString(2, getMd5(per.pass));
+                s = c.prepareStatement("insert into user(email , pass) values(?,?)");
+                s.setString(1, per.email);
+                s.setString(2, getMd5(per.pass));
 
-			}
+            }
 
-			int x = s.executeUpdate();
+            int x = s.executeUpdate();
 
-			if (x == 0) {
-				System.out.println("values not inserted");
-			} else {
-				System.out.println("values inserted successfull");
-			}
-		} catch (Exception e) {
-			System.out.println(e);
-		}
+            if (x == 0) {
+                System.out.println("values not inserted");
+            } else {
+                System.out.println("values inserted successfull");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
-	}
+    }
 
-	public static boolean validate(String email, String password) {
+    public static boolean validate(String email, String password) {
 
-		System.out.println("Email : " + email + " Password : " + password);
+        System.out.println("Email : " + email + " Password : " + password);
 
-		user p = data.get_person(email, password);
+        user p = data.get_person(email, password);
 
-		if (p == null || p.email == null) {
+        if (p == null || p.email == null) {
 
-			return false;
+            return false;
 
-		} else {
+        } else {
 
-			return true;
+            return true;
 
-		}
+        }
 
-	}
+    }
 
-	public static boolean validate(String email) {
+    public static boolean validate(String email) {
 
-		user p = get_person(email);
+        user p = get_person(email);
 
-		if (p == null || p.email == null) {
+        if (p == null || p.email == null) {
 
-			return false;
+            return false;
 
-		} else {
+        } else {
 
-			return true;
+            return true;
 
-		}
-	}
+        }
+    }
 
-	public static boolean validate(user p) {
+    public static boolean validate(user p) {
 
 //		user p = data.get_person(email, city , nickname , DOB);
 
-		if (p == null) {
+        if (p == null) {
 
-			return false;
+            return false;
 
-		} else {
+        } else {
 
-			return true;
+            return true;
 
-		}
+        }
 
-	}
+    }
 
-	public static boolean check_availability(String email, String password) {
+    public static boolean check_availability(String email, String password) {
 
-		user p = data.get_person(email, password);
+        user p = data.get_person(email, password);
 
-		if (p == null || p.email == null) {
+        if (p == null || p.email == null) {
 
-			System.out.println("available");
-			return true;
+            System.out.println("available");
+            return true;
 
-		} else {
+        } else {
 
-			System.out.println("not available");
-			return false;
+            System.out.println("not available");
+            return false;
 
-		}
+        }
 
-	}
+    }
 
 }

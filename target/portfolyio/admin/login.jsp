@@ -1,4 +1,16 @@
+<%@page import="org.eclipse.jdt.internal.compiler.ast.IfStatement"%>
 <%@ page isELIgnored = "false" %>
+
+
+<%-- <%
+	if(application.getAttribute("user_id") != null){
+		String a = application.getAttribute("user_id").toString();
+		
+		if(!a.isBlank() && !a.toString().isEmpty()){
+			response.sendRedirect("index.jsp");
+		}
+	}
+%> --%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -347,6 +359,7 @@ footer a {
 					cookie = new Cookie("user_id", "" + u.user_id);
 					// 604800 secs = week of time
 					cookie.setMaxAge(604800);
+					cookie.setPath("/");
 					response.addCookie(cookie);
 
 					// set attribute
@@ -384,6 +397,7 @@ footer a {
 					// set cookie
 					cookie = new Cookie("user_id", "" + u.user_id);
 					// 604800 secs = week of time
+							cookie.setPath("/");
 					cookie.setMaxAge(604800);
 					response.addCookie(cookie);
 

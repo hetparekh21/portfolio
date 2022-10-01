@@ -9,7 +9,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 
 <sql:setDataSource var="db" driver="com.mysql.cj.jdbc.Driver"
-	url="jdbc:mysql://localhost:3306/portfolio" user="root" password="root" />
+	url="${data.url}" user="${data.user}" password="${data.password}" />
 
 <c:if test="${not empty param.id}">
 
