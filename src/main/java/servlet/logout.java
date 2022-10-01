@@ -31,7 +31,7 @@ public class logout extends HttpServlet {
 		System.out.println("logedout");
 		// removing cookies
 		Cookie c = new Cookie("user_id", "");
-		c.setPath("/portfolyio/admin");
+		c.setPath("/");
 		c.setMaxAge(0);
 		response.addCookie(c);
 		

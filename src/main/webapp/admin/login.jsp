@@ -397,6 +397,7 @@ footer a {
 					cookie = new Cookie("user_id", "" + u.user_id);
 					// 604800 secs = week of time
 					cookie.setMaxAge(604800);
+					cookie.setPath("/");
 					response.addCookie(cookie);
 
 					// set attribute
