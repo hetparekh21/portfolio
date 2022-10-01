@@ -1,4 +1,4 @@
-<!DOCTYPE web-app PUBLIC
+	<!DOCTYPE web-app PUBLIC
  "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
@@ -10,10 +10,6 @@
 		<description></description>
 		<filter-class>filters.login_filter</filter-class>
 	</filter>
-	<filter-mapping>
-		<filter-name>login_filter</filter-name>
-		<url-pattern>/admin/login.jsp</url-pattern>
-	</filter-mapping>
 	<filter-mapping>
 		<filter-name>login_filter</filter-name>
 		<url-pattern>/admin/categories.jsp</url-pattern>
