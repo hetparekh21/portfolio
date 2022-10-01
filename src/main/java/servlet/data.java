@@ -11,6 +11,8 @@ import java.sql.SQLException;
 
 public class data {
 
+    public static String local_url , local_user , local_password ;
+    
 	public static String getMd5(String input) {
 		try {
 
