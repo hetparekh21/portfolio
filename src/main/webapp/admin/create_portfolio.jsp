@@ -180,7 +180,7 @@ font-size: 12px;
                     <div class="spk-img">
                         <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="trainer-img" />
                         <ul>
-                            <li>
+                            <li>	
                                 <a href="../Portfolio_2/index.jsp?userId=<%= encodedString %>" target="_blank" style="color: white; font-size: 16px;">Preview</a>
                                 
                             </li>

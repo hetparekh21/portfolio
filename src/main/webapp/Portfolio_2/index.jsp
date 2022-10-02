@@ -1,24 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	
-	<%@ page isELIgnored = "false" %>
+
+<%@ page isELIgnored="false"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
-
 <%@ page import="java.util.Base64"%>
-	<%
-	String a = request.getParameter("userId").toString();
-	byte[] decodedBytes = Base64.getDecoder().decode(a);
-	String decodedString = new String(decodedBytes);
-	application.setAttribute("UserId", decodedString);
-	%>
-
-	<%@ page import="servlet.data" %>
+<%
+String a = request.getParameter("userId").toString();
+application.setAttribute("encyUID", a);
+byte[] decodedBytes = Base64.getDecoder().decode(a);
+String decodedString = new String(decodedBytes);
+application.setAttribute("UserId", decodedString);
+%>
+<%@ page import="servlet.data"%>
 <sql:setDataSource var="db" driver="com.mysql.cj.jdbc.Driver"
 	url="${data.url }" user="${data.user }" password="${data.password }" />
-
-
 <!DOCTYPE HTML>
 
 <html>
@@ -62,10 +59,10 @@
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center">
 						<div class="display-t js-fullheight">
-								<div class="display-tc js-fullheight animate-box"
-									data-animate-effect="fadeIn">
-							<sql:query var="rs" dataSource="${db}">SELECT * from about where user_id =${UserId} ;	</sql:query>
-							<c:forEach var="data" items="${rs.rows}">
+							<div class="display-tc js-fullheight animate-box"
+								data-animate-effect="fadeIn">
+								<sql:query var="rs" dataSource="${db}">SELECT * from about where user_id =${UserId} ;	</sql:query>
+								<c:forEach var="data" items="${rs.rows}">
 									<div class="profile-thumb"
 										style="background: url(images/user-3.jpg);"></div>
 
@@ -83,45 +80,49 @@
 									<li><a href="#"><i class="icon-dribbble2"></i></a></li>
 								</ul>
 							</p> -->
-							</c:forEach>
-								</div>
+								</c:forEach>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</header>
-		
+
 		<sql:query var="rs" dataSource="${db}">SELECT a.*, c.* from about a join contact_info c on a.user_id = c.user_id where a.user_id =${UserId} ;	</sql:query>
 
-	<c:forEach var="data" items="${rs.rows}">
+		<c:forEach var="data" items="${rs.rows}">
 
-		<div id="fh5co-about" class="animate-box">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-						<h2>About Me</h2>
+			<div id="fh5co-about" class="animate-box">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+							<h2>About Me</h2>
+						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4">
-						<ul class="info">
-							<li><span class="first-block">Full Name:</span><span
-								class="second-block"><c:out value="${data.name_}"></c:out></span></li>
-							<li><span class="first-block">Phone:</span><span
-								class="second-block"><c:out value="${data.phone}"></c:out></span></li>
-							<li><span class="first-block">Email:</span><span
-								class="second-block"><c:out value="${data.email}"></c:out></span></li>
-							<li><span class="first-block">Website:</span><span
-								class="second-block">www.yoursite.com</span></li>
-							<li><span class="first-block">Address:</span><span
-								class="second-block"><c:out value="${data.address}"></c:out></span></li>
-						</ul>
-					</div>
-					<div class="col-md-8">
-						<h2>Hello There!</h2>
-						<p><c:out value="${data.about_me}"></c:out></p>
-						<p><c:out value="${data.about_me}"></c:out></p>
-						<!-- <p>
+					<div class="row">
+						<div class="col-md-4">
+							<ul class="info">
+								<li><span class="first-block">Full Name:</span><span
+									class="second-block"><c:out value="${data.name_}"></c:out></span></li>
+								<li><span class="first-block">Phone:</span><span
+									class="second-block"><c:out value="${data.phone}"></c:out></span></li>
+								<li><span class="first-block">Email:</span><span
+									class="second-block"><c:out value="${data.email}"></c:out></span></li>
+								<li><span class="first-block">Website:</span><span
+									class="second-block">www.yoursite.com</span></li>
+								<li><span class="first-block">Address:</span><span
+									class="second-block"><c:out value="${data.address}"></c:out></span></li>
+							</ul>
+						</div>
+						<div class="col-md-8">
+							<h2>Hello There!</h2>
+							<p>
+								<c:out value="${data.about_me}"></c:out>
+							</p>
+							<p>
+								<c:out value="${data.about_me}"></c:out>
+							</p>
+							<!-- <p>
 						<ul class="fh5co-social-icons">
 							<li><a href="#"><i class="icon-twitter2"></i></a></li>
 							<li><a href="#"><i class="icon-facebook3"></i></a></li>
@@ -129,12 +130,12 @@
 							<li><a href="#"><i class="icon-dribbble2"></i></a></li>
 						</ul>
 					</p> -->
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 
-</c:forEach>
+		</c:forEach>
 		<div id="fh5co-resume" class="fh5co-bg-color">
 			<div class="container">
 				<div class="row animate-box">
@@ -194,12 +195,14 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<sql:query var="rs" dataSource="${db}">SELECT * from skills where user_id =${UserId} ;	</sql:query>
-		<%! int i=1, j=1; %>
+		<%!int i = 1, j = 1;%>
 		<c:forEach var="data" items="${rs.rows}">
-					<% i+=1; %>
-				</c:forEach>
+			<%
+			i += 1;
+			%>
+		</c:forEach>
 
 		<div id="fh5co-skills" class="animate-box">
 			<div class="container">
@@ -210,52 +213,64 @@
 				</div>
 				<sql:query var="rs" dataSource="${db}">SELECT * from skills where user_id =${UserId} ;	</sql:query>
 				<div class="row row-pb-md">
-	<c:forEach var="data" items="${rs.rows}">
-					<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-						<div class="chart" data-percent="<c:out value="${data.level}"></c:out>">
-							<span><strong><c:out value="${data.skill}"></c:out></strong><c:out value="${data.level}"></c:out>%</span>
+					<c:forEach var="data" items="${rs.rows}">
+						<div class="col-md-3 col-sm-6 col-xs-12 text-center">
+							<div class="chart"
+								data-percent="<c:out value="${data.level}"></c:out>">
+								<span><strong><c:out value="${data.skill}"></c:out></strong>
+									<c:out value="${data.level}"></c:out>%</span>
+							</div>
 						</div>
-					</div>
-				</c:forEach>
+					</c:forEach>
 				</div>
-				
-				<% int k=1 ; %>
+
+				<%
+				int k = 1;
+				%>
 				<div class="row">
-				<c:forEach var="data" items="${rs.rows}">
-				
-				<% if (k++ <= i/2) { %>
-         <div class="col-md-6">
-						<div class="progress-wrap">
-							<h3>
-								<span class="name-left"><c:out value="${data.skill}"></c:out></span><span
-									class="value-right"><c:out value="${data.level}"></c:out>%</span>
-							</h3>
-							<div class="progress">
-								<div
-									class="progress-bar progress-bar-1 progress-bar-striped active"
-									role="progressbar" aria-valuenow="<c:out value="${data.level}"></c:out>" aria-valuemin="0"
-									aria-valuemax="100" style="width: 90%"></div>
+					<c:forEach var="data" items="${rs.rows}">
+
+						<%
+						if (k++ <= i / 2) {
+						%>
+						<div class="col-md-6">
+							<div class="progress-wrap">
+								<h3>
+									<span class="name-left"><c:out value="${data.skill}"></c:out></span><span
+										class="value-right"><c:out value="${data.level}"></c:out>%</span>
+								</h3>
+								<div class="progress">
+									<div
+										class="progress-bar progress-bar-1 progress-bar-striped active"
+										role="progressbar"
+										aria-valuenow="<c:out value="${data.level}"></c:out>"
+										aria-valuemin="0" aria-valuemax="100" style="width: 90%"></div>
+								</div>
 							</div>
 						</div>
-					</div>
-      <% } else { %>
-         <div class="col-md-6">
-						<div class="progress-wrap">
-							<h3>
-								<span class="name-left"><c:out value="${data.skill}"></c:out></span><span
-									class="value-right"><c:out value="${data.level}"></c:out>%</span>
-							</h3>
-							<div class="progress">
-								<div
-									class="progress-bar progress-bar-1 progress-bar-striped active"
-									role="progressbar" aria-valuenow="<c:out value="${data.level}"></c:out>" aria-valuemin="0"
-									aria-valuemax="100" style="width: 90%"></div>
+						<%
+						} else {
+						%>
+						<div class="col-md-6">
+							<div class="progress-wrap">
+								<h3>
+									<span class="name-left"><c:out value="${data.skill}"></c:out></span><span
+										class="value-right"><c:out value="${data.level}"></c:out>%</span>
+								</h3>
+								<div class="progress">
+									<div
+										class="progress-bar progress-bar-1 progress-bar-striped active"
+										role="progressbar"
+										aria-valuenow="<c:out value="${data.level}"></c:out>"
+										aria-valuemin="0" aria-valuemax="100" style="width: 90%"></div>
+								</div>
 							</div>
 						</div>
-					</div>
-      <% } %>
-					
-				</c:forEach>
+						<%
+						}
+						%>
+
+					</c:forEach>
 				</div>
 			</div>
 		</div>
@@ -285,17 +300,24 @@
 			<div class="choose animate-box">
 				<h2>Contact</h2>
 				<form action="../SendMessage" method="post">
-				<input type="hidden" name="user_id" value="<c:out value="${UserId}"></c:out>">
+					<input type="hidden" name="user_id"
+						value="<c:out value="${UserId}"></c:out>"> 
+						
+						<%-- <input type="hidden" name="enc_user_id"
+						value="<c:out value="${encyUID}"></c:out>"> --%>
+						
+						<input type="hidden" name="url" id="url"
+								value="">
 					<div class="row form-group">
-						<div class="col-md-6">
-							<input type="text" id="fname" class="form-control" name="name"
-								placeholder="Your firstname">
+						<div class="col-md-12">
+							<input type="text" id="name" class="form-control" name="name"
+								placeholder="Your Name">
 						</div>
 					</div>
 					<div class="row form-group">
-						<div class="col-md-6">
-							<input type="text" id="lname" class="form-control" name="lname"
-								placeholder="Your lastname">
+						<div class="col-md-12">
+							<input type="text" id="subject" class="form-control"
+								name="subject" placeholder="Your Subject">
 						</div>
 					</div>
 
@@ -309,7 +331,7 @@
 
 					<div class="row form-group">
 						<div class="col-md-12">
-							<textarea name="message" id="message" cols="30" rows="10" 
+							<textarea name="message" id="message" cols="30" rows="10"
 								class="form-control" placeholder="message"></textarea>
 						</div>
 					</div>
@@ -354,6 +376,14 @@
 
 	<!-- Main -->
 	<script src="js/main.js"></script>
+	
+	
+	<script>
+window.onload = function getURL() {
+	document.getElementById("url").value = window.location.href;
+		}
+	</script>
+	
 
 </body>
 </html>

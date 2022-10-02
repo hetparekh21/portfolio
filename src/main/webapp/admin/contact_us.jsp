@@ -25,6 +25,7 @@
 							   <th>ID</th>
 							   <th>Name</th>
 							   <th>Email</th>
+							   <th>Subject</th>
 							   <th>Message</th>
 							   <th>Date</th>
 							   <th></th>
@@ -38,6 +39,7 @@
 							   <td><c:out value="${data.id}"></c:out></td>
 							   <td><c:out value="${data.name_}"></c:out></td>
 							   <td><c:out value="${data.email}"></c:out></td>
+							   <td><c:out value="${data.subject_}"></c:out></td>
 							   <td><c:out value="${data.message}"></c:out></td>
 							   <td><c:out value="${data.date_}"></c:out></td>
 							   <td></td>

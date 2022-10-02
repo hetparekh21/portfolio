@@ -351,6 +351,8 @@
 											<c:out value="${data.email}"></c:out>
 										</p>
 									</div>
+								
+									
 								</a>
 
 								<div class="phone">
@@ -371,15 +373,23 @@
 							<input type="hidden" name="user_id"
 								value="<c:out value="${UserId}"></c:out>">
 								
-								<input type="hidden" name="enc_user_id"
-								value="<c:out value="${encyUID}"></c:out>">
+								<%-- <input type="hidden" name="enc_user_id"
+								value="<c:out value="${encyUID}"></c:out>"> --%>
+								
+								<input type="hidden" name="url" id="url"
+								value="">
 							<div class="row">
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-12">
 									<label for="name">Your Name</label> <input type="text"
 										name="name" placeholder="Enter name" class="form-control"
 										required>
 								</div>
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-12">
+									<label for="subject">Subject</label> <input type="text"
+										name="subject" placeholder="Enter subject" class="form-control"
+										required>
+								</div>
+								<div class="form-group col-md-12">
 									<label for="email">Your Email</label> <input type="email"
 										name="email" placeholder="Enter email" class="form-control"
 										required>
@@ -391,7 +401,7 @@
 									rows="10" required></textarea>
 							</div>
 							<div class="text-center">
-								<button type="submit" name="submit">Send Message</button>
+								<button type="submit" name="submit" id="submit">Send Message</button>
 							</div>
 						</form>
 					</div>
@@ -423,6 +433,11 @@
 	<!-- Template Main JS File -->
 	<script src="assets/js/main.js"></script>
 
+<script>
+window.onload = function getURL() {
+	document.getElementById("url").value = window.location.href;
+		}
+	</script>
 </body>
 
 </html>

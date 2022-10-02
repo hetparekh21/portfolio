@@ -54,7 +54,8 @@ public class reset_password extends HttpServlet {
 			System.out.println("not validated");
 			
 			out.append("<center><h2 style=\"color: red;\">warning : Data doesn't match</h2></center>");
-			request.getRequestDispatcher("admin/forgot_password.jsp").include(request, response);
+			//request.getRequestDispatcher("admin/forgot_password.jsp").include(request, response);
+			response.sendRedirect("admin/forgot_password.jsp");
 			
 		}
 	}

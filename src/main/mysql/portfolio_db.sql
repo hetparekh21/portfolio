@@ -96,6 +96,7 @@ CREATE TABLE IF NOT EXISTS messages (
 	id int primary key auto_increment,
     name_ VARCHAR(255),
     email VARCHAR(255),
+    subject_ VARCHAR(255),
     message TEXT,
     date_ VARCHAR(20),
     user_id INT,
