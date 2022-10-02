@@ -2,14 +2,20 @@
 <%@ page isELIgnored = "false" %>
 
 
-<%
+<%-- <%
 	if(application.getAttribute("user_id") != null){
 		
-		if(!application.getAttribute("user_id").toString().isBlank() && !application.getAttribute("user_id").toString().isEmpty()){
+		if(!application.getAttribute("user_id").toString().equals("")){
 			response.sendRedirect("index.jsp");
 		}
+		else{
+			
+			if(!application.getAttribute("user_id").toString().isBlank() && !application.getAttribute("user_id").toString().isEmpty()){
+				response.sendRedirect("index.jsp");
+			}
+		}
 	}
-%>
+%> --%>
 
 <!DOCTYPE html>
 <html lang="en">

@@ -1,4 +1,3 @@
-<%@ page isELIgnored = "false" %>
 
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -6,6 +5,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<%@ page isELIgnored = "false" %>
 <!-- HEADER -->
 <!doctype html>
 <html class="no-js" lang="">
@@ -129,8 +129,10 @@ input:checked+.slider:before {
 
 					<li class="menu-item-has-children dropdown">
                   
-                     <a href="../Portfolio_2/index.jsp?userId=<%= encodedString %>" target="_blank"> Create Portfolio
+                     <a href="create_portfolio.jsp"> Create Portfolio
                      </a>
+                     <%-- <a href="../Portfolio_2/index.jsp?userId=<%= encodedString %>" target="_blank"> Create Portfolio
+                     </a> --%>
                   </li>
 
 					<li><a href="../logout"> <i
@@ -141,20 +143,15 @@ input:checked+.slider:before {
 			</div>
 		</nav>
 	</aside>
-	<div id="right-panel" class="right-panel">
-		<header id="header" class="header">
-			<!-- <div class="top-left">
-               <div class="navbar-header">
-                  <a class="navbar-brand" href="plant.php">Name</a>
-                  <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
-               </div>
-            </div> -->
-			<div class="top-right">
-				<div class="header-menu">
-					<div class="user-area dropdown float-right">
+	<div id="right-panel" class="right-panel bg-white">
+		<header id="header" class="header bg-white">
+			<div class="top-right ">
+				<div class="header-menu ">
+					<div class="user-area dropdown float-right ">
 
 						<c:out value="Welcome ${username}"></c:out>
 					</div>
 				</div>
 			</div>
 		</header>
+		

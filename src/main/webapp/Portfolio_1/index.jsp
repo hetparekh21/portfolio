@@ -8,6 +8,7 @@
 <%@ page import="java.util.Base64"%>
 	<%
 	String a = request.getParameter("userId").toString();
+	application.setAttribute("encyUID", a);
 	byte[] decodedBytes = Base64.getDecoder().decode(a);
 	String decodedString = new String(decodedBytes);
 	application.setAttribute("UserId", decodedString);
@@ -369,6 +370,9 @@
 						<form action="../SendMessage" method="post">
 							<input type="hidden" name="user_id"
 								value="<c:out value="${UserId}"></c:out>">
+								
+								<input type="hidden" name="enc_user_id"
+								value="<c:out value="${encyUID}"></c:out>">
 							<div class="row">
 								<div class="form-group col-md-6">
 									<label for="name">Your Name</label> <input type="text"

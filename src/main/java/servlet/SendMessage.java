@@ -50,7 +50,7 @@ public class SendMessage extends HttpServlet {
 				System.out.println("values inserted successfull");
 			}
 
-			response.sendRedirect("Portfolio_1/index.jsp?userId=" + request.getParameter("user_id"));
+			response.sendRedirect("Portfolio_1/index.jsp?userId=" + request.getParameter("enc_user_id"));
 		} catch (Exception e) {
 			System.out.println(e);
 		}

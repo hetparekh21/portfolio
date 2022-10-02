@@ -60,7 +60,7 @@
 										<label for="users" class=" form-control-label">Password</label>
 										<input type="password" name="password"
 											placeholder="Enter password" class="form-control"
-											value='<c:out value="${data.pass}"></c:out>' required
+											 required
 											disabled>
 									</div>
 
