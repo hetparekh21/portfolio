@@ -40,7 +40,7 @@ public class logout extends HttpServlet {
 		getServletContext().setAttribute("user_id", null);
 
 //		System.out.println("redirecting to dashboard");
-		response.sendRedirect("admin/index.jsp");
+		response.sendRedirect("welcome.jsp");
 	}
 
 	/**

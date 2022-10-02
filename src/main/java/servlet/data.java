@@ -33,10 +33,10 @@ public class data {
 	public static Connection connect() throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 
-//		Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/portfolio", "root", "root");
+	Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/portfolio", "root", "root");
 
-		Connection c = DriverManager.getConnection("jdbc:mysql://51.79.192.74:3306/solvejet_portfolio",
-				"solvejet_Admin", "Admin@2022");
+		// Connection c = DriverManager.getConnection("jdbc:mysql://51.79.192.74:3306/solvejet_portfolio",
+				//"solvejet_Admin", "Admin@2022");
 		return c;
 	}
 

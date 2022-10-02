@@ -2526,12 +2526,12 @@ section {
 							
 							
 						</div>
-						<div class="text-center text-lg-start">
+					<!-- 	<div class="text-center text-lg-start">
 							<a href="admin/index.jsp"
 								class="btn-goto-dashboard scrollto d-inline-flex align-items-center justify-content-center align-self-center">
 								<span>Dashboard</span> <i class="bi bi-arrow-right"></i>
 							</a>
-						</div>
+						</div> -->
 					</div>
 				</div>
 				<div class="col-lg-6 hero-img" data-aos="zoom-out"

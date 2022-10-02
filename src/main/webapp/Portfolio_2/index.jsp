@@ -283,38 +283,33 @@
 			</div>
 			<div class="choose animate-box">
 				<h2>Contact</h2>
-				<form action="#">
+				<form action="../SendMessage" method="post">
+				<input type="hidden" name="user_id" value="<c:out value="${UserId}"></c:out>">
 					<div class="row form-group">
 						<div class="col-md-6">
-							<input type="text" id="fname" class="form-control"
+							<input type="text" id="fname" class="form-control" name="name"
 								placeholder="Your firstname">
 						</div>
 					</div>
 					<div class="row form-group">
 						<div class="col-md-6">
-							<input type="text" id="lname" class="form-control"
+							<input type="text" id="lname" class="form-control" name="lname"
 								placeholder="Your lastname">
 						</div>
 					</div>
 
 					<div class="row form-group">
 						<div class="col-md-12">
-							<input type="text" id="email" class="form-control"
+							<input type="text" id="email" class="form-control" name="email"
 								placeholder="Your email address">
 						</div>
 					</div>
 
-					<div class="row form-group">
-						<div class="col-md-12">
-							<input type="text" id="subject" class="form-control"
-								placeholder="Your subject of this message">
-						</div>
-					</div>
 
 					<div class="row form-group">
 						<div class="col-md-12">
-							<textarea name="message" id="message" cols="30" rows="10"
-								class="form-control" placeholder="Say something about us"></textarea>
+							<textarea name="message" id="message" cols="30" rows="10" 
+								class="form-control" placeholder="message"></textarea>
 						</div>
 					</div>
 					<div class="form-group">
