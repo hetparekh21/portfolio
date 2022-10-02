@@ -12,10 +12,6 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>login_filter</filter-name>
-		<url-pattern>/admin/login.jsp</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>login_filter</filter-name>
 		<url-pattern>/admin/categories.jsp</url-pattern>
 	</filter-mapping>
 	<filter-mapping>

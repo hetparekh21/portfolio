@@ -14,8 +14,9 @@
 	application.setAttribute("UserId", decodedString);
 	%>
 
+	<%@ page import="servlet.data" %>
 <sql:setDataSource var="db" driver="com.mysql.cj.jdbc.Driver"
-	url="jdbc:mysql://localhost:3306/portfolio" user="root" password="root" />
+	url="${data.url }" user="${data.user }" password="${data.password }" />
 
 
 <!DOCTYPE HTML>
