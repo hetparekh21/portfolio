@@ -22,8 +22,8 @@ application.setAttribute("UserId", decodedString);
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Profile &mdash; Free Website Template, Free HTML5
-	Template by freehtml5.co</title>
+<sql:query var="rs" dataSource="${db}">SELECT * from about where user_id =${UserId} ;	</sql:query>
+<title>${rs.rows[0].name_}'s Profile</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link href="https://fonts.googleapis.com/css?family=Space+Mono"
@@ -72,14 +72,6 @@ application.setAttribute("UserId", decodedString);
 									<h3>
 										<span><c:out value="${data.positions}"></c:out></span>
 									</h3>
-									<!-- <p>
-								<ul class="fh5co-social-icons">
-									<li><a href="#"><i class="icon-twitter2"></i></a></li>
-									<li><a href="#"><i class="icon-facebook2"></i></a></li>
-									<li><a href="#"><i class="icon-linkedin2"></i></a></li>
-									<li><a href="#"><i class="icon-dribbble2"></i></a></li>
-								</ul>
-							</p> -->
 								</c:forEach>
 							</div>
 						</div>
@@ -109,7 +101,7 @@ application.setAttribute("UserId", decodedString);
 								<li><span class="first-block">Email:</span><span
 									class="second-block"><c:out value="${data.email}"></c:out></span></li>
 								<li><span class="first-block">Website:</span><span
-									class="second-block">www.yoursite.com</span></li>
+									class="second-block"><c:out value="${data.website}"></c:out></span></li>
 								<li><span class="first-block">Address:</span><span
 									class="second-block"><c:out value="${data.address}"></c:out></span></li>
 							</ul>
@@ -117,19 +109,11 @@ application.setAttribute("UserId", decodedString);
 						<div class="col-md-8">
 							<h2>Hello There!</h2>
 							<p>
-								<c:out value="${data.about_me}"></c:out>
+								<c:out value="${data.about_me_1}"></c:out>
 							</p>
 							<p>
-								<c:out value="${data.about_me}"></c:out>
+								<c:out value="${data.about_me_2}"></c:out>
 							</p>
-							<!-- <p>
-						<ul class="fh5co-social-icons">
-							<li><a href="#"><i class="icon-twitter2"></i></a></li>
-							<li><a href="#"><i class="icon-facebook3"></i></a></li>
-							<li><a href="#"><i class="icon-linkedin2"></i></a></li>
-							<li><a href="#"><i class="icon-dribbble2"></i></a></li>
-						</ul>
-					</p> -->
 						</div>
 					</div>
 				</div>
@@ -224,7 +208,7 @@ application.setAttribute("UserId", decodedString);
 					</c:forEach>
 				</div>
 
-				<%
+				<%-- <%
 				int k = 1;
 				%>
 				<div class="row">
@@ -271,7 +255,7 @@ application.setAttribute("UserId", decodedString);
 						%>
 
 					</c:forEach>
-				</div>
+				</div> --%>
 			</div>
 		</div>
 
