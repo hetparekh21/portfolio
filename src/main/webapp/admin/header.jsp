@@ -5,7 +5,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<%@ page isELIgnored = "false" %>
+<%@ page isELIgnored="false"%>
 <!-- HEADER -->
 <!doctype html>
 <html class="no-js" lang="">
@@ -13,7 +13,7 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>${username}'s Dashboard</title>
+<title>${username}'sDashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="assets/css/normalize.css">
 <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -24,7 +24,10 @@
 <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
 <link rel="stylesheet" href="assets/css/style.css">
 <!-- font awesome  -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+	crossorigin="anonymous" />
 <link
 	href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800'
 	rel='stylesheet' type='text/css'>
@@ -119,18 +122,13 @@ input:checked+.slider:before {
 						href="skills.jsp"> Skills</a></li>
 
 
-					<li class="menu-item-has-children dropdown">
-                  
-                     <a href="create_portfolio.jsp"> Create Portfolio
-                     </a>
-                     <%-- <a href="../Portfolio_2/index.jsp?userId=<%= encodedString %>" target="_blank"> Create Portfolio
-                     </a> --%>
-                  </li>
+					<li class="menu-item-has-children dropdown"><a
+						href="create_portfolio.jsp"> Create Portfolio </a> <%-- <a href="../Portfolio_2/index.jsp?userId=<%= encodedString %>" target="_blank"> Create Portfolio
+                     </a> --%></li>
 
-					<li><a href="../logout"> <i
+					<li><a href='../welcome.jsp?action=logout'> <i
 							class="menu-icon fa fa-sign-out"></i>Logout
 					</a></li>
-
 				</ul>
 			</div>
 		</nav>
@@ -146,4 +144,3 @@ input:checked+.slider:before {
 				</div>
 			</div>
 		</header>
-		

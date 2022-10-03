@@ -42,6 +42,7 @@
 									<tr>
 										<th>ID</th>
 										<th>Name</th>
+										<th>Level</th>
 										<th>Category</th>
 										<th></th>
 									</tr>
@@ -59,6 +60,7 @@
 										<tr>
 											<td><%=i++%></td>
 											<td><c:out value="${data.skill}"></c:out></td>
+											<td><c:out value="${data.level}"></c:out></td>
 											<td><c:out value="${data.category_name}"></c:out></td>
 											<td>&nbsp;<span class='badge badge-edit'><a
 													href='add_skill.jsp?id=${data.id}'>Edit</a></span>&nbsp;<span
