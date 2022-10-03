@@ -32,26 +32,17 @@ public class SendMessage extends HttpServlet {
 			Connection c = data.connect();
             
 			PreparedStatement s;
-			String name=request.getParameter("name");
-			String lname=request.getParameter("lname");
-			String store="";
-			
-			String check = request.getParameter("lname");
-			if(check!=null && !check.isEmpty())
-				store=name+" "+lname;
-			else 
-				store=name;
-			
 			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 			LocalDateTime now = LocalDateTime.now();
 
-			s = c.prepareStatement("INSERT INTO messages(name_, email, message,date_, user_id) VALUES (?, ?, ?, ?, ?)");
+			s = c.prepareStatement("INSERT INTO messages(name_,subject_, email, message,date_, user_id) VALUES (?,?, ?, ?, ?, ?)");
 
-			s.setString(1, store);
-			s.setString(2, request.getParameter("email"));
-			s.setString(3, request.getParameter("message"));
-			s.setString(4, dtf.format(now).toString());
-			s.setInt(5, Integer.parseInt(request.getParameter("user_id")));
+			s.setString(1, request.getParameter("name"));
+			s.setString(2, request.getParameter("subject"));
+			s.setString(3, request.getParameter("email"));
+			s.setString(4, request.getParameter("message"));
+			s.setString(5, dtf.format(now).toString());
+			s.setInt(6, Integer.parseInt(request.getParameter("user_id")));
 
 			int x = s.executeUpdate();
 
@@ -61,14 +52,7 @@ public class SendMessage extends HttpServlet {
 				System.out.println("values inserted successfull");
 			}
 
-			String a = request.getParameter("user_id"); 
-			System.out.println(a);
-			String encodedString = Base64.getEncoder().encodeToString(a.getBytes());
-			
-			if(lname==null)
-				response.sendRedirect("Portfolio_1/index.jsp?userId=" + encodedString);
-			else
-				response.sendRedirect("Portfolio_2/index.jsp?userId=" + encodedString);
+			response.sendRedirect("" + request.getParameter("url"));
 		} catch (Exception e) {
 			System.out.println(e);
 		}

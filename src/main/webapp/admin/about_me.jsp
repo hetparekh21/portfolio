@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	
-	<%@ page isELIgnored = "false" %>
+
+<%@ page isELIgnored="false"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 
-	<%@ page import="servlet.data" %>
+<%@ page import="servlet.data"%>
 <sql:setDataSource var="db" driver="com.mysql.cj.jdbc.Driver"
 	url="${data.url }" user="${data.user }" password="${data.password }" />
 
@@ -18,18 +18,40 @@
 		UPDATE about SET 
 			name_ = "${param.name}", 
 			nationality= "${param.nationality}", 
-			about_me= "${param.about_me}",
+			about_me_1= "${param.about_me_1}",
+			website = "${param.website}",
 			positions= "${param.positions}",
+			<%
+	if (request.getParameter("about_me_2") != null) {
+		if (!request.getParameter("about_me_2").isBlank() || !request.getParameter("about_me_2").isEmpty()) {
+	%>about_me_1= "${param.about_me_1}",<%
+	}
+	}
+	%>
 			projects= ${param.projects}
 		where user_id = ${user_id}
 	</sql:update>
-	
+
 	<c:if test="${count eq \"0\" or  \"null\"}">
 
-		<sql:update dataSource="${db}" var="count">  
-			INSERT INTO about(name_ , nationality, about_me, positions , projects , user_id) VALUES ("${param.name}", "${param.nationality}", "${param.about_me}", "${param.positions}" , ${param.projects} ,${user_id} );
+		<%
+		if (request.getParameter("about_me_2") != null) {
+			if (!request.getParameter("about_me_2").isBlank() || !request.getParameter("about_me_2").isEmpty()) {
+		%><sql:update dataSource="${db}" var="count">  
+			INSERT INTO about(name_ , nationality, about_me_1, about_me_2, website, positions , projects , user_id) VALUES 
+			("${param.name}", "${param.nationality}", "${param.about_me_1}", "${param.about_me_2}", "${param.website}", "${param.positions}" , ${param.projects} ,${user_id} );
 		</sql:update>
-
+		<%
+		}
+		} else {
+		%>
+		<sql:update dataSource="${db}" var="count">  
+			INSERT INTO about(name_ , nationality, about_me_1, website, positions , projects , user_id) VALUES 
+			("${param.name}", "${param.nationality}", "${param.about_me_1}", "${param.website}", "${param.positions}" , ${param.projects} ,${user_id} );
+		</sql:update>
+		<%
+		}
+		%>
 	</c:if>
 
 </c:if>
@@ -40,12 +62,11 @@
 			<div class="col-lg-12">
 				<div class="card">
 					<div class="card-header">
-						<strong>About Me</strong>
-						
-						<span class="box-link" style="float:right;">
-							<label class="switch"> <input id="edit" type="checkbox"
-								onclick="formSetting()"> <span class="slider round"></span>
-							</label>
+						<strong>About Me</strong> <span class="box-link"
+							style="float: right;"> <label class="switch"> <input
+								id="edit" type="checkbox" onclick="formSetting()"> <span
+								class="slider round"></span>
+						</label>
 						</span>
 					</div>
 
@@ -69,9 +90,8 @@
 
 								<div class="form-group">
 									<label for="about" class=" form-control-label">My
-										Positions</label>
-									<input type="text" value="${rs.rows[0].positions}" name="positions" class="form-control" required
-										disabled>
+										Positions</label> <input type="text" value="${rs.rows[0].positions}"
+										name="positions" class="form-control" required disabled>
 								</div>
 
 								<div class="form-group">
@@ -82,9 +102,22 @@
 
 								</div>
 								<div class="form-group">
-									<label for="about" class=" form-control-label">About Me</label>
-									<textarea name="about_me" class="form-control" required
-										disabled>${rs.rows[0].about_me}</textarea>
+									<label for="about" class=" form-control-label">About
+										Me-1</label>
+									<textarea name="about_me_1" class="form-control" required
+										disabled>${rs.rows[0].about_me_2}</textarea>
+								</div>
+								<div class="form-group">
+									<label for="about" class=" form-control-label">About
+										Me-2</label>
+									<textarea name="about_me_2" class="form-control" disabled>${rs.rows[0].about_me_1}</textarea>
+								</div>
+
+								<div class="form-group">
+									<label for="about" class=" form-control-label">Website</label>
+									<input type="text" name="website" id="website"
+										value="${rs.rows[0].website}" class="form-control" required
+										disabled>
 								</div>
 
 								<button id="payment-button" name="submit" type="submit"

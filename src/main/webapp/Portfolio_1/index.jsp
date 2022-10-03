@@ -1,18 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	
-	<%@ page isELIgnored = "false" %>
+
+<%@ page isELIgnored="false"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <%@ page import="java.util.Base64"%>
-	<%
-	String a = request.getParameter("userId").toString();
-	byte[] decodedBytes = Base64.getDecoder().decode(a);
-	String decodedString = new String(decodedBytes);
-	application.setAttribute("UserId", decodedString);
-	%>
-	<%@ page import="servlet.data" %>
+<%
+String a = request.getParameter("userId").toString();
+application.setAttribute("encyUID", a);
+byte[] decodedBytes = Base64.getDecoder().decode(a);
+String decodedString = new String(decodedBytes);
+application.setAttribute("UserId", decodedString);
+%>
+<%@ page import="servlet.data"%>
 <sql:setDataSource var="db" driver="com.mysql.cj.jdbc.Driver"
 	url="${data.url }" user="${data.user }" password="${data.password }" />
 <!DOCTYPE html>
@@ -22,7 +23,8 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>Portfolio 1</title>
+<sql:query var="rs" dataSource="${db}">SELECT * from about where user_id =${UserId} ;	</sql:query>
+<title>${rs.rows[0].name_}'sProfile</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
@@ -51,9 +53,23 @@
 <link href="assets/css/style.css" rel="stylesheet">
 </head>
 
+<style>
+#hero {
+	width: 100%;
+	height: 100vh;
+	/* background: url("../img/hero-bg.jpg") top center; */
+	background-size: cover;
+	background: rgb(4,11,20);
+background: -moz-linear-gradient(125deg, rgba(4,11,20,1) 0%, rgba(19,41,69,1) 100%);
+background: -webkit-linear-gradient(125deg, rgba(4,11,20,1) 0%, rgba(19,41,69,1) 100%);
+background: linear-gradient(105deg, rgba(4,11,20,1) 0%, rgba(19,41,69,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#040b14",endColorstr="#132945",GradientType=1);
+}
+</style>
+
 <body>
 
-	
+
 
 
 	<!-- ======= Mobile nav toggle button ======= -->
@@ -154,7 +170,7 @@
 								<div class="col-lg-6">
 									<ul>
 										<li><i class="bi bi-chevron-right"></i> <strong>Website:</strong>
-											<span>www.example.com</span></li>
+											<span><c:out value="${data.website}"></c:out></span></li>
 										<li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong>
 											<span><c:out value="${data.phone}"></c:out></span></li>
 									</ul>
@@ -169,7 +185,10 @@
 								</div>
 							</div>
 							<p>
-								<c:out value="${data.about_me}"></c:out>
+								<c:out value="${data.about_me_1}"></c:out>
+							</p>
+							<p>
+								<c:out value="${data.about_me_2}"></c:out>
 							</p>
 						</div>
 					</div>
@@ -350,6 +369,8 @@
 											<c:out value="${data.email}"></c:out>
 										</p>
 									</div>
+
+
 								</a>
 
 								<div class="phone">
@@ -369,25 +390,36 @@
 						<form action="../SendMessage" method="post">
 							<input type="hidden" name="user_id"
 								value="<c:out value="${UserId}"></c:out>">
+
+							<%-- <input type="hidden" name="enc_user_id"
+								value="<c:out value="${encyUID}"></c:out>"> --%>
+
+							<input type="hidden" name="url" id="url" value="">
 							<div class="row">
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-12">
 									<label for="name">Your Name</label> <input type="text"
 										name="name" placeholder="Enter name" class="form-control"
 										required>
 								</div>
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-12 mt-3">
+									<label for="subject">Subject</label> <input type="text"
+										name="subject" placeholder="Enter subject"
+										class="form-control" required>
+								</div>
+								<div class="form-group col-md-12 mt-3">
 									<label for="email">Your Email</label> <input type="email"
 										name="email" placeholder="Enter email" class="form-control"
 										required>
 								</div>
 							</div>
-							<div class="form-group">
+							<div class="form-group mt-3">
 								<label for="message">Message</label>
 								<textarea class="form-control" name="message" id="message"
 									rows="10" required></textarea>
 							</div>
-							<div class="text-center">
-								<button type="submit" name="submit">Send Message</button>
+							<div class="text-center mt-2">
+								<button type="submit" name="submit" id="submit"
+									class="btn btn-primary">Send Message</button>
 							</div>
 						</form>
 					</div>
@@ -419,6 +451,11 @@
 	<!-- Template Main JS File -->
 	<script src="assets/js/main.js"></script>
 
+	<script>
+		window.onload = function getURL() {
+			document.getElementById("url").value = window.location.href;
+		}
+	</script>
 </body>
 
 </html>
