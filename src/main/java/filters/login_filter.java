@@ -11,6 +11,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import servlet.data;
 import servlet.user;
@@ -42,6 +43,8 @@ public class login_filter extends HttpFilter implements Filter {
 			throws IOException, ServletException {
 		System.out.println("calling filter");
 		HttpServletRequest req = (HttpServletRequest) request;
+		HttpServletResponse res = (HttpServletResponse) response ;
+		
 		ServletContext sc = req.getSession().getServletContext();
 		Cookie ck[] = req.getCookies();
 		boolean user_cookie_found = false;
@@ -79,14 +82,16 @@ public class login_filter extends HttpFilter implements Filter {
 			if (!user_cookie_found) {
 
 				System.out.println("redirect to login 1");
-				req.getRequestDispatcher("login.jsp").forward(req, response);
+				res.sendRedirect("login.jsp");
+                /* req.getRequestDispatcher("login.jsp").forward(req, response); */
 
 			}
 
 		} else {
 
 			System.out.println("redirect to login 2");
-			req.getRequestDispatcher("login.jsp").forward(req, response);
+			res.sendRedirect("login.jsp");
+            /* req.getRequestDispatcher("login.jsp").forward(req, response); */
 
 		}
 	}

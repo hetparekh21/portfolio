@@ -11,7 +11,7 @@
 
 <c:if test="${pageContext.request.method=='POST'}">
 
-	<sql:update dataSource="${db}" var="count" sql="" >  
+	<sql:update dataSource="${db}" var="count" >  
 		UPDATE contact_info SET 
 			address = "${param.address}", 
 			phone= "${param.phone}", 

@@ -5,9 +5,21 @@
 <%
 	if(application.getAttribute("user_id") != null){
 		
-		if(!application.getAttribute("user_id").toString().isBlank() && !application.getAttribute("user_id").toString().isEmpty()){
+		if(!application.getAttribute("user_id").toString().equalsIgnoreCase("")){
+			
 			response.sendRedirect("index.jsp");
+			System.out.println("Redirected to index");
+			
+		}else{
+			
+			if(!application.getAttribute("user_id").toString().isBlank() && !application.getAttribute("user_id").toString().isEmpty()){
+				response.sendRedirect("index.jsp");
+				System.out.println("Redirected to index");
+			}
+
+			
 		}
+	
 	}
 %>
 
