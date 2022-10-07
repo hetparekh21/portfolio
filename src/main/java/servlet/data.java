@@ -11,14 +11,14 @@ import java.sql.SQLException;
 
 public class data {
 
-
 //  Connection c = DriverManager.getConnection("jdbc:mysql://51.79.192.74:3306/solvejet_portfolio",
 //          "solvejet_Admin", "Admin@2022");
-    
-    static String dbName = "portfolio", host = "localhost",
+
+    static String dbName = "portfolio?useSSL=true&requireSSL=false", host = "portfolio-0.mysql.database.azure.com",
             port = "3306";
-    
-    public static String url = "jdbc:mysql://" + host + ":" + port + "/" + dbName , user = "root", password = "root";;
+
+    public static String url = "jdbc:mysql://" + host + ":" + port + "/" + dbName, user = "portfolio@portfolio-0", password = "Admin@123";
+
 
     public static String getMd5(String input) {
         try {
@@ -42,8 +42,8 @@ public class data {
     public static Connection connect() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
 
-        Connection c = DriverManager.getConnection(url, user , password);
-        
+        Connection c = DriverManager.getConnection(url, user, password);
+
         return c;
     }
 
