@@ -39,8 +39,6 @@
 
 		String email = request.getParameter("email");
 
-		out.print(email);
-
 		boolean validation = data.validate(email);
 
 		if (validation) {
@@ -99,7 +97,7 @@
 
 	<!-- make a center div with 40% of screen size -->
 	<center>
-		<h2 style="color: red;">warning : user does not exists</h2>
+		<h2 style="color: red;">warning : user does not exist</h2>
 	</center>
 	<div class="container" style="width: 40%; margin-top: 10%;">
 		<div class="card">
