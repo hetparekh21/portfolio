@@ -2,7 +2,7 @@
 <%@ page isELIgnored = "false" %>
 
 
-<%
+<%-- <%
 	if(application.getAttribute("user_id") != null){
 		
 		if(!application.getAttribute("user_id").toString().equalsIgnoreCase("")){
@@ -21,7 +21,7 @@
 		}
 	
 	}
-%>
+%> --%>
 
 <!DOCTYPE html>
 <html lang="en">
