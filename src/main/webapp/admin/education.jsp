@@ -14,9 +14,33 @@
 	
 <c:if test="${not empty param.id}">
 
+	<sql:update dataSource="${db}" var="count">  
+		DELETE FROM skills where id = "${param.id}" ; 
+	</sql:update>
 	
+	<%
+	response.sendRedirect("skills.jsp");
+	%>
 
 </c:if>
+
+<div class="content pb-0">
+	<div class="orders">
+		<div class="row">
+			<div class="col-xl-12">
+				<div class="card">
+					<div class="card-body">
+						<strong>Education</strong>
+						<span class="" style="float:right;">
+						    <button type="button" class="btn text-decoration-none bg-secondary text-white" data-toggle="modal"
+						     data-target="#exampleModal">Add Education</button>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
