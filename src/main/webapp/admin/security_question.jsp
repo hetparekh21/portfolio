@@ -5,15 +5,16 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+<%@ page import="servlet.data" %>
 
 <sql:setDataSource var="db" driver="com.mysql.cj.jdbc.Driver"
-	url="jdbc:mysql://localhost:3306/portfolio" user="root" password="root" />
-	
+	url="${data.url}" user="${data.user}" password="${data.password}" />
+
 <c:if test="${pageContext.request.method=='POST'}">
 
 	<sql:update dataSource="${db}" var="count">  
 			INSERT INTO security_questions(hobby, nickname, DOB, user_id) VALUES
-				("${param.q2}", "${param.q1}", "${param.q3}", "${user_id}");
+				("${param.q2}", "${param.q1}", "${param.q3}", ${user_id});
 		</sql:update>
 			<% response.sendRedirect("index.jsp"); %>
 </c:if>
