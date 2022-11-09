@@ -1793,9 +1793,13 @@ section {
 
 
 
+
+
 %
 {
 transform
+
+
 
 
 
@@ -1805,10 +1809,16 @@ transform
 
 
 
+
+
 rotate
 
 
+
+
 (
+
+
 
 
 
@@ -1818,7 +1828,11 @@ rotate
 
 
 
+
+
 )
+
+
 
 
 ;
@@ -1834,9 +1848,13 @@ keyframes animate-loading { 0% {
 
 
 
+
+
 %
 {
 transform
+
+
 
 
 
@@ -1846,10 +1864,16 @@ transform
 
 
 
+
+
 rotate
 
 
+
+
 (
+
+
 
 
 
@@ -1859,7 +1883,11 @@ rotate
 
 
 
+
+
 )
+
+
 
 
 ;

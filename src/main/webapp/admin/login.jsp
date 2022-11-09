@@ -1,4 +1,3 @@
-<%@page import="org.eclipse.jdt.internal.compiler.ast.IfStatement"%>
 <%@ page isELIgnored = "false" %>
 
 

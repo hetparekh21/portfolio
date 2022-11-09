@@ -37,9 +37,6 @@
 
 <form method="post" action="categories.jsp" id="editForm">
 
-	
-
-
 	<div class="card-body card-block">
 
 		
