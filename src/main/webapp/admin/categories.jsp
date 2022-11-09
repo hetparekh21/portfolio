@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@ page isELIgnored = "false" %>
+<%@ page isELIgnored="false"%>
 <jsp:include page="header.jsp" />
 <%@ page import="servlet.*"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 
-	<%@ page import="servlet.data" %>
+<%@ page import="servlet.data"%>
 <sql:setDataSource var="db" driver="com.mysql.cj.jdbc.Driver"
 	url="${data.url }" user="${data.user }" password="${data.password }" />
 
@@ -39,23 +39,23 @@
 
 	<div class="card-body card-block">
 
-		
+
 		<div class="container mt-3">
-		<label for="contact" class=" form-control-label">Add Category</label>
-		<div class="input-group mb-3">
-			<input type="text" name="title" class="form-control"
-				placeholder="Add Category" required>
+			<label for="contact" class=" form-control-label">Add Category</label>
+			<div class="input-group mb-3">
+				<input type="text" name="title" class="form-control"
+					placeholder="Add Category" required>
 
-			<div class="input-group-append">
-				<button id="add_category" name="submit" type="submit"
-					class="btn bg-secondary text-white">
-					<span>Add Category</span>
-				</button>
+				<div class="input-group-append">
+					<button id="add_category" name="submit" type="submit"
+						class="btn bg-secondary text-white">
+						<span>Add Category</span>
+					</button>
+				</div>
 			</div>
+
+
 		</div>
-
-
-	</div>
 
 	</div>
 </form>
