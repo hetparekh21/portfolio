@@ -90,14 +90,6 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#040b14",endCo
 						<a href="index.html"> <c:out value="${data.name_}"></c:out>
 						</a>
 					</h1>
-					<!-- Social Links -->
-					<!-- <div class="social-links mt-3 text-center">
-          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-          <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-          <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-          <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-        </div> -->
 				</div>
 
 
@@ -108,8 +100,6 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#040b14",endCo
 								class="bx bx-home"></i> <span>Home</span></a></li>
 						<li><a href="#about" class="nav-link scrollto"><i
 								class="bx bx-user"></i> <span>About</span></a></li>
-						<li><a href="#resume" class="nav-link scrollto"><i
-								class="bx bx-file-blank"></i> <span>Resume</span></a></li>
 						<li><a href="#contact" class="nav-link scrollto"><i
 								class="bx bx-envelope"></i> <span>Contact</span></a></li>
 					</ul>
@@ -263,80 +253,6 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#040b14",endCo
 			</div>
 		</section>
 		<!-- End Skills Section -->
-
-		<!-- ======= Resume Section ======= -->
-		<section id="resume" class="resume">
-			<div class="container">
-
-				<div class="section-title">
-					<h2>Resume</h2>
-					<!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
-				</div>
-
-
-				<div class="row">
-					<div class="col-lg-6" data-aos="fade-up">
-						<h3 class="resume-title">Sumary</h3>
-						<sql:query var="rs" dataSource="${db}">SELECT a.*, c.* from about a join contact_info c on a.user_id = c.user_id where a.user_id =${UserId} ;</sql:query>
-
-						<c:forEach var="data" items="${rs.rows}">
-							<div class="resume-item pb-0">
-								<h4>
-									<c:out value="${data.name_}"></c:out>
-								</h4>
-								<p>
-									<em><c:out value="${data.about_me}"></c:out></em>
-								</p>
-								<ul>
-									<li><c:out value="${data.address}"></c:out></li>
-									<li><c:out value="${data.phone}"></c:out></li>
-									<li><c:out value="${data.email}"></c:out></li>
-								</ul>
-							</div>
-
-						</c:forEach>
-
-						<sql:query var="rs" dataSource="${db}">SELECT a.*, c.* from about a join contact_info c on a.user_id = c.user_id where a.user_id =${UserId} ;</sql:query>
-
-						<h3 class="resume-title">Education</h3>
-						<c:forEach var="data" items="${rs.rows}">
-							<div class="resume-item">
-								<h4>Master of Fine Arts &amp; Graphic Design</h4>
-								<h5>2015 - 2016</h5>
-								<p>
-									<em>Rochester Institute of Technology, Rochester, NY</em>
-								</p>
-								<p>Qui deserunt veniam. Et sed aliquam labore tempore sed
-									quisquam iusto autem sit. Ea vero voluptatum qui ut dignissimos
-									deleniti nerada porti sand markend</p>
-							</div>
-						</c:forEach>
-					</div>
-					<div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-						<h3 class="resume-title">Professional Experience</h3>
-
-						<div class="resume-item">
-							<h4>Senior graphic design specialist</h4>
-							<h5>2019 - Present</h5>
-							<p>
-								<em>Experion, New York, NY </em>
-							</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-								Blanditiis quia aperiam dignissimos vel odio autem sunt qui
-								quisquam, maxime eligendi sit perspiciatis fuga provident nemo
-								voluptate illo. Placeat, dolore esse.</p>
-							<!-- <ul>
-                <li>Lead in the design, development, and implementation of the graphic, layout, and production communication materials</li>
-                <li>Delegate tasks to the 7 members of the design team and provide counsel on all aspects of the project. </li>
-                <li>Supervise the assessment of all graphic materials in order to ensure quality and accuracy of the design</li>
-                <li>Oversee the efficient use of production project budgets ranging from $2,000 - $25,000</li>
-              </ul> -->
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- End Resume Section -->
 
 		<!-- ======= Contact Section ======= -->
 		<section id="contact" class="contact">

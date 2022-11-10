@@ -120,66 +120,8 @@ application.setAttribute("UserId", decodedString);
 			</div>
 
 		</c:forEach>
-		<div id="fh5co-resume" class="fh5co-bg-color">
-			<div class="container">
-				<div class="row animate-box">
-					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-						<h2>My Resume</h2>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12 col-md-offset-0">
-						<ul class="timeline">
-							<li class="timeline-heading text-center animate-box">
-								<div>
-									<h3>Work Experience</h3>
-								</div>
-							</li>
-							<li class="animate-box timeline-unverted">
-								<div class="timeline-badge">
-									<i class="icon-suitcase"></i>
-								</div>
-								<div class="timeline-panel">
-									<div class="timeline-heading">
-										<h3 class="timeline-title">Senior Developer</h3>
-										<span class="company">Company Name - 2016 - Current</span>
-									</div>
-									<div class="timeline-body">
-										<p>Far far away, behind the word mountains, far from the
-											countries Vokalia and Consonantia, there live the blind
-											texts.</p>
-									</div>
-								</div>
-							</li>
-
-							<br>
-							<li class="timeline-heading text-center animate-box">
-								<div>
-									<h3>Education</h3>
-								</div>
-							</li>
-							<li class="timeline-inverted animate-box">
-								<div class="timeline-badge">
-									<i class="icon-graduation-cap"></i>
-								</div>
-								<div class="timeline-panel">
-									<div class="timeline-heading">
-										<h3 class="timeline-title">Masters Degree</h3>
-										<span class="company">University Name - 2007 - 2009</span>
-									</div>
-									<div class="timeline-body">
-										<p>Far far away, behind the word mountains, they live in
-											Bookmarksgrove right at the coast of the Semantics, a large
-											language ocean.</p>
-									</div>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-
+		
+<!-- ends -->
 		<sql:query var="rs" dataSource="${db}">SELECT * from skills where user_id =${UserId} ;	</sql:query>
 		<%!int i = 1, j = 1;%>
 		<c:forEach var="data" items="${rs.rows}">
@@ -207,55 +149,6 @@ application.setAttribute("UserId", decodedString);
 						</div>
 					</c:forEach>
 				</div>
-
-				<%-- <%
-				int k = 1;
-				%>
-				<div class="row">
-					<c:forEach var="data" items="${rs.rows}">
-
-						<%
-						if (k++ <= i / 2) {
-						%>
-						<div class="col-md-6">
-							<div class="progress-wrap">
-								<h3>
-									<span class="name-left"><c:out value="${data.skill}"></c:out></span><span
-										class="value-right"><c:out value="${data.level}"></c:out>%</span>
-								</h3>
-								<div class="progress">
-									<div
-										class="progress-bar progress-bar-1 progress-bar-striped active"
-										role="progressbar"
-										aria-valuenow="<c:out value="${data.level}"></c:out>"
-										aria-valuemin="0" aria-valuemax="100" style="width: 90%"></div>
-								</div>
-							</div>
-						</div>
-						<%
-						} else {
-						%>
-						<div class="col-md-6">
-							<div class="progress-wrap">
-								<h3>
-									<span class="name-left"><c:out value="${data.skill}"></c:out></span><span
-										class="value-right"><c:out value="${data.level}"></c:out>%</span>
-								</h3>
-								<div class="progress">
-									<div
-										class="progress-bar progress-bar-1 progress-bar-striped active"
-										role="progressbar"
-										aria-valuenow="<c:out value="${data.level}"></c:out>"
-										aria-valuemin="0" aria-valuemax="100" style="width: 90%"></div>
-								</div>
-							</div>
-						</div>
-						<%
-						}
-						%>
-
-					</c:forEach>
-				</div> --%>
 			</div>
 		</div>
 
