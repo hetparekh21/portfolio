@@ -110,8 +110,8 @@ input:checked+.slider:before {
 						href="contact_info.jsp"> Contact Information</a></li>
 					<li class="menu-item-has-children dropdown"><a
 						href="users.jsp"> Edit Profile</a></li>
-					<li class="menu-item-has-children dropdown"><a
-						href="education.jsp"> Education</a></li>
+		<!-- 			<li class="menu-item-has-children dropdown"><a
+						href="education.jsp"> Education</a></li> -->
 
 					<li class="menu-item-has-children dropdown"><a
 						href="contact_us.jsp"> Messages</a></li>
