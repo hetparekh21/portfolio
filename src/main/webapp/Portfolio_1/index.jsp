@@ -24,7 +24,7 @@ application.setAttribute("UserId", decodedString);
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
 <sql:query var="rs" dataSource="${db}">SELECT * from about where user_id =${UserId} ;	</sql:query>
-<title>${rs.rows[0].name_}'sProfile</title>
+<title>${rs.rows[0].name_}'s Profile</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
@@ -160,7 +160,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#040b14",endCo
 								<div class="col-lg-6">
 									<ul>
 										<li><i class="bi bi-chevron-right"></i> <strong>Website:</strong>
-											<span><c:out value="${data.website}"></c:out></span></li>
+											<span><a href=<c:out value="${data.website}"></c:out> target="_blank"><c:out value="${data.website}"></c:out></a></span></li>
 										<li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong>
 											<span><c:out value="${data.phone}"></c:out></span></li>
 									</ul>

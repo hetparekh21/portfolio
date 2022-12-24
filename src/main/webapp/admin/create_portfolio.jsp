@@ -173,17 +173,22 @@ a {
 				<div class="speakers w-75">
 					<div class="spk-img">
 						<img class="img-fluid"
-							src="https://bootdey.com/img/Content/avatar/avatar4.png"
-							alt="trainer-img" />
+							src="../assets/p1.PNG" />
 						<ul>
-							<li><a
-								href="../Portfolio_1/index.jsp?userId=<%=encodedString%>"
-								target="_blank" style="color: white; font-size: 16px;">Preview</a>
+							<li>
+							<button type="button" class="btn btn-link " style="color:white" data-bs-toggle="modal" data-bs-target="#myModal2">
+    Preview
+  </button>
 							</li>
 						</ul>
 					</div>
 					<div class="spk-info">
 						<h3>Template 1</h3>
+						
+						<a
+								href="../Portfolio_1/index.jsp?userId=<%=encodedString%>"
+								target="_blank" style="font-size: 15px;">Open</a>
+						
 						<button id="pf1" type="button" class="btn btn-link"
 							value="http://localhost:8080/portfolyio/Portfolio_1/index.jsp?userId=<%=encodedString%>"
 							onclick="getURL(this.id)">Copy</button>
@@ -196,15 +201,15 @@ a {
 				<div class="speakers w-75">
 					<div class="spk-img">
 						<img class="img-fluid"
-							src="https://bootdey.com/img/Content/avatar/avatar4.png"
-							alt="trainer-img" />
+							src="../assets/p2.PNG" />
+							
 						<ul>
 							<li>
 							<%-- <a
 								href="../Portfolio_2/index.jsp?userId=<%=encodedString%>"
 								target="_blank" style="color: white; font-size: 16px;">Preview</a> --%>
 								
-							<button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#myModal">
+							<button type="button" class="btn btn-link" style="color:white" data-bs-toggle="modal" data-bs-target="#myModal">
     Preview
   </button>
 
@@ -214,6 +219,9 @@ a {
 					<div class="spk-info">
 						<h3>Template 2</h3>
 						<%-- <a href="../Portfolio_2/index.jsp?userId=<%= encodedString %>" id="copy-link">Copy Link</a> --%>
+						<a
+								href="../Portfolio_2/index.jsp?userId=<%=encodedString%>"
+								target="_blank" style="font-size: 15px;">Open</a>
 						<button id="pf2" type="button" class="btn btn-link"
 							value="http://localhost:8080/portfolyio/Portfolio_2/index.jsp?userId=<%=encodedString%>"
 							onclick="getURL(this.id)">Copy</button>
@@ -228,11 +236,6 @@ a {
 	<!-- /container end-->
 </div>
 
-
-  <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#myModal">
-    Open modal
-  </button>
-
 <!-- The Modal -->
 <div class="modal" id="myModal">
   <div class="modal-dialog modal-fullscreen">
@@ -240,7 +243,6 @@ a {
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Modal Heading</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
@@ -251,6 +253,24 @@ a {
     </div>
   </div>
 </div>
+
+<div class="modal" id="myModal2">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <iframe src="http://localhost:8080/portfolyio/Portfolio_1/index.jsp?userId=<%= encodedString %>" style="height:100%;width:100%;" title="description"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
   

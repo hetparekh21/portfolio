@@ -24,7 +24,7 @@
 			<%
 	if (request.getParameter("about_me_2") != null) {
 		if (!request.getParameter("about_me_2").isBlank() || !request.getParameter("about_me_2").isEmpty()) {
-	%>about_me_1= "${param.about_me_1}",<%
+	%>about_me_2= "${param.about_me_2}",<%
 	}
 	}
 	%>
@@ -105,12 +105,12 @@
 									<label for="about" class=" form-control-label">About
 										Me-1</label>
 									<textarea name="about_me_1" class="form-control" required
-										disabled>${rs.rows[0].about_me_2}</textarea>
+										disabled>${rs.rows[0].about_me_1}</textarea>
 								</div>
 								<div class="form-group">
 									<label for="about" class=" form-control-label">About
 										Me-2</label>
-									<textarea name="about_me_2" class="form-control" disabled>${rs.rows[0].about_me_1}</textarea>
+									<textarea name="about_me_2" class="form-control" disabled>${rs.rows[0].about_me_2}</textarea>
 								</div>
 
 								<div class="form-group">

@@ -13,7 +13,7 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>${username}'sDashboard</title>
+<title>${username}'s Dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="assets/css/normalize.css">
 <link rel="stylesheet" href="assets/css/bootstrap.min.css">
