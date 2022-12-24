@@ -1,144 +1,259 @@
-use portfolio;
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Dec 24, 2022 at 07:53 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.4
 
-DROP TABLE IF EXISTS about;
-DROP TABLE IF EXISTS contact_info;
-DROP TABLE IF EXISTS education;
-DROP TABLE IF EXISTS skills;
-DROP TABLE IF EXISTS messages;
-DROP TABLE IF EXISTS security_questions;
-DROP TABLE IF EXISTS categories;
-DROP TABLE IF EXISTS user;
-
-CREATE TABLE IF NOT EXISTS user (
-	id INT AUTO_INCREMENT , 
-    username VARCHAR(255) NOT NULL, 
-    pass varchar(255) NOT NULL, 
-    email varchar(255) NOT NULL UNIQUE, 
-    PRIMARY KEY(id) 
-);
-
--- INSERT INTO user VALUES 
--- 	(1, "Test User", "admin", "admin@gmail.com");
-/*INSERT INTO user VALUES 
-	(2, "Het Parekh", "admin", "hetparekh21@gmail.com");*/
-    
-CREATE TABLE IF NOT EXISTS about (
-	id INT PRIMARY KEY AUTO_INCREMENT, 
-    name_ VARCHAR(255),
-    nationality VARCHAR(255), 
-    website VARCHAR(255), 
-    about_me_1 TEXT,
-    about_me_2 TEXT,
-    positions TEXT, 
-    projects INT,
-    user_id INT,
-    FOREIGN KEY (user_id) REFERENCES user(id)
-);
-
--- select * from user ;
-
--- INSERT INTO about VALUES (1, "Test User", "INDIA", "I AM Test User", "DEVELOPER",2, 1);
--- INSERT INTO about VALUES (2, "Het Parekh", "INDIA", "I AM Het Parekh", "DEVELOPER",3, 2);
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
 
-CREATE TABLE IF NOT EXISTS contact_info (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-    address TEXT,
-    phone VARCHAR(255),
-    email VARCHAR(255),
-    user_id INT,
-    FOREIGN KEY (user_id) REFERENCES user(id)
-);
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
--- INSERT INTO contact_info VALUES (1, "Some Address", "1234567890", "admin@gmail.com", 1);
+--
+-- Database: `portfolio`
+--
+CREATE DATABASE IF NOT EXISTS `portfolio` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `portfolio`;
 
--- select * from contact_info;
+-- --------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS education (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-    school TEXT,
-    college TEXT,
-    degree TEXT,
-    start_date TEXT,
-    end_date TEXT,
-    user_id INT,
-    study bool,
-    FOREIGN KEY (user_id) REFERENCES user(id)
-);	
--- insert into education(school,college,degree,start_date,end_date,user_id,study) values("mehta","gu","bsc","2022-09-04","2022-12-02",1,1);
--- select * from education;
+--
+-- Table structure for table `about`
+--
 
-CREATE TABLE IF NOT EXISTS categories(
-	id INT PRIMARY KEY AUTO_INCREMENT, 
-	category_name VARCHAR(255),
-    user_id INT,
-    FOREIGN KEY (user_id) REFERENCES user(id)
-);
+DROP TABLE IF EXISTS `about`;
+CREATE TABLE IF NOT EXISTS `about` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name_` varchar(255) DEFAULT NULL,
+  `nationality` varchar(255) DEFAULT NULL,
+  `website` varchar(255) DEFAULT NULL,
+  `about_me_1` text DEFAULT NULL,
+  `about_me_2` text DEFAULT NULL,
+  `positions` text DEFAULT NULL,
+  `projects` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- INSERT INTO categories VALUES(1, 'Language skills',1);
--- INSERT INTO categories VALUES(2, 'Work skills',1);
+--
+-- Truncate table before insert `about`
+--
 
--- SELECT * from about where user_id = 2 ;
+TRUNCATE TABLE `about`;
+-- --------------------------------------------------------
 
--- SELECT c.category_name  from categories c where id = 1 ;
+--
+-- Table structure for table `categories`
+--
 
-CREATE TABLE IF NOT EXISTS skills (
-	id INT PRIMARY KEY AUTO_INCREMENT, 
-    skill TEXT,
-    user_id INT,
-    category INT,
-    level int ,
-    FOREIGN KEY (category) REFERENCES categories(id) ,
-    FOREIGN KEY (user_id) REFERENCES user(id)
-);
+DROP TABLE IF EXISTS `categories`;
+CREATE TABLE IF NOT EXISTS `categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `category_name` varchar(255) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- INSERT INTO skills VALUES (1, "JSP SERVLET", 1, 2,75);
+--
+-- Truncate table before insert `categories`
+--
 
-CREATE TABLE IF NOT EXISTS messages (
-	id int primary key auto_increment,
-    name_ VARCHAR(255),
-    email VARCHAR(255),
-    subject_ VARCHAR(255),
-    message TEXT,
-    date_ VARCHAR(20),
-    user_id INT,
-    FOREIGN KEY (user_id) REFERENCES user(id)
-);
+TRUNCATE TABLE `categories`;
+-- --------------------------------------------------------
 
--- INSERT INTO messages VALUES (1, "user1", "user1@gmail.com", "Hi i am user 1", "01/04/2022", 1);
--- INSERT INTO messages VALUES (2, "user2", "user2@gmail.com", "Hi i am user 2", "01/09/2022", 1);
--- INSERT INTO messages VALUES (3, "user3", "user3@gmail.com", "Hi i am user 3", "04/05/2022", 1);
--- INSERT INTO messages VALUES (4, "user4", "user4@gmail.com", "Hi i am user 4", "01/01/2022", 1);
+--
+-- Table structure for table `contact_info`
+--
 
-CREATE TABLE IF NOT EXISTS security_questions(
-	id INT PRIMARY KEY AUTO_INCREMENT, 
-    hobby VARCHAR(255),
-    nickname VARCHAR(255),
-    DOB VARCHAR(20),
-    user_id INT,
-    FOREIGN KEY (user_id) REFERENCES user(id)
-);
--- INSERT INTO security_questions VALUES(1, "IND", "admin", "1999-01-01", 1);
+DROP TABLE IF EXISTS `contact_info`;
+CREATE TABLE IF NOT EXISTS `contact_info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `address` text DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Truncate table before insert `contact_info`
+--
 
+TRUNCATE TABLE `contact_info`;
+-- --------------------------------------------------------
 
--- Dummy data for table 
-/*INSERT INTO user(username, pass, email) VALUES 
-	("Test User1", "admin", "admin1@gmail.com"),
-    ("Test User2", "admin", "admin2@gmail.com"),
-    ("Test User3", "admin", "admin3@gmail.com"),
-    ("Test User4", "admin", "admin4@gmail.com");*/
-    
-/*INSERT INTO about(name_, nationality, about_me, positions, projects, user_id) VALUES 
-	("Test User1", "USA", "I AM Test User2", "UI/UX",3, 2),
-    ("Test User2", "CANADA", "I AM Test User3", "System Admin",0, 3),
-    ("Test User3", "UAE", "I AM Test User4", "HR",4, 4),
-    ("Test User4", "UK", "I AM Test User5", "CEO",7, 5);*/
-    
-/*INSERT INTO contact_info(address, phone, email, user_id) VALUES 
-	("Some Address1", "1234567890", "admin1@gmail.com", 2),
-    ("Some Address2", "9999999999", "admin2@gmail.com", 3),
-    ("Some Address3", "0987654321", "admin3@gmail.com", 4),
-    ("Some Address4", "1212121212", "admin4@gmail.com", 5); */
-    
-    -- select * from user where id = 7;
+--
+-- Table structure for table `education`
+--
+
+DROP TABLE IF EXISTS `education`;
+CREATE TABLE IF NOT EXISTS `education` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `school` text DEFAULT NULL,
+  `college` text DEFAULT NULL,
+  `degree` text DEFAULT NULL,
+  `start_date` text DEFAULT NULL,
+  `end_date` text DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `study` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Truncate table before insert `education`
+--
+
+TRUNCATE TABLE `education`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `messages`
+--
+
+DROP TABLE IF EXISTS `messages`;
+CREATE TABLE IF NOT EXISTS `messages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name_` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `subject_` varchar(255) DEFAULT NULL,
+  `message` text DEFAULT NULL,
+  `date_` varchar(20) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Truncate table before insert `messages`
+--
+
+TRUNCATE TABLE `messages`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `security_questions`
+--
+
+DROP TABLE IF EXISTS `security_questions`;
+CREATE TABLE IF NOT EXISTS `security_questions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `hobby` varchar(255) DEFAULT NULL,
+  `nickname` varchar(255) DEFAULT NULL,
+  `DOB` varchar(20) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Truncate table before insert `security_questions`
+--
+
+TRUNCATE TABLE `security_questions`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `skills`
+--
+
+DROP TABLE IF EXISTS `skills`;
+CREATE TABLE IF NOT EXISTS `skills` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `skill` text DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `category` int(11) DEFAULT NULL,
+  `level` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `category` (`category`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Truncate table before insert `skills`
+--
+
+TRUNCATE TABLE `skills`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
+  `pass` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Truncate table before insert `user`
+--
+
+TRUNCATE TABLE `user`;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `about`
+--
+ALTER TABLE `about`
+  ADD CONSTRAINT `about_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+
+--
+-- Constraints for table `categories`
+--
+ALTER TABLE `categories`
+  ADD CONSTRAINT `categories_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+
+--
+-- Constraints for table `contact_info`
+--
+ALTER TABLE `contact_info`
+  ADD CONSTRAINT `contact_info_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+
+--
+-- Constraints for table `education`
+--
+ALTER TABLE `education`
+  ADD CONSTRAINT `education_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+
+--
+-- Constraints for table `messages`
+--
+ALTER TABLE `messages`
+  ADD CONSTRAINT `messages_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+
+--
+-- Constraints for table `security_questions`
+--
+ALTER TABLE `security_questions`
+  ADD CONSTRAINT `security_questions_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+
+--
+-- Constraints for table `skills`
+--
+ALTER TABLE `skills`
+  ADD CONSTRAINT `skills_ibfk_1` FOREIGN KEY (`category`) REFERENCES `categories` (`id`),
+  ADD CONSTRAINT `skills_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

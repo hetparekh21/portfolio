@@ -330,7 +330,7 @@ footer a {
 
 	}
 	%>
-
+	
 	<%
 	ServletContext sc = getServletContext();
 	response.setContentType("text/html");

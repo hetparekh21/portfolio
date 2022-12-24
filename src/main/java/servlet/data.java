@@ -11,15 +11,18 @@ import java.sql.SQLException;
 
 public class data {
 
-//  Connection c = DriverManager.getConnection("jdbc:mysql://51.79.192.74:3306/solvejet_portfolio",
-//          "solvejet_Admin", "Admin@2022");
+    static String dbName = "portfolio", host = "localhost", port = "3306";
 
-    static String dbName = "portfolio?useSSL=true&requireSSL=false", host = "portfolio-0.mysql.database.azure.com",
-            port = "3306";
+    public static String url = "jdbc:mysql://" + host + ":" + port + "/" + dbName, user = "root", password = "root";
 
-    public static String url = "jdbc:mysql://" + host + ":" + port + "/" + dbName, user = "portfolio@portfolio-0", password = "Admin@123";
+    public static Connection connect() throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
 
+        Connection c = DriverManager.getConnection(url, user, password);
 
+        return c;
+    }
+    
     public static String getMd5(String input) {
         try {
 
@@ -34,17 +37,9 @@ public class data {
         }
 
         // For specifying wrong message digest algorithms
-        catch (NoSuchAlgorithmException e) {
+        catch (Exception e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public static Connection connect() throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-
-        Connection c = DriverManager.getConnection(url, user, password);
-
-        return c;
     }
 
     public static user get_person(String email, String password) {
@@ -59,6 +54,8 @@ public class data {
             PreparedStatement s = c.prepareStatement("SELECT * FROM user where email = ? AND pass = ?");
             s.setString(1, email);
             s.setString(2, getMd5(password));
+            
+            
             rs = s.executeQuery();
 
             rs = s.executeQuery();
