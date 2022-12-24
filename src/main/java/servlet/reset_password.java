@@ -38,20 +38,20 @@ public class reset_password extends HttpServlet {
 		String nickname = request.getParameter("nickname");
 		String DOB = request.getParameter("dob");
 		
-		System.out.println("Details are "+DOB+" "+email+" "+nickname+" "+hobby);
+//		System.out.println("Details are "+DOB+" "+email+" "+nickname+" "+hobby);
 		
 		user p = data.get_person(email, hobby , nickname , DOB);
 		
 		if(data.validate(p)) {
 			
-			System.out.println("validated");
+//			System.out.println("validated");
 			request.getServletContext().setAttribute("user_id", p.user_id);
 //			request.getRequestDispatcher("admin/users.jsp").forward(request, response);
 			response.sendRedirect("admin/users.jsp");
 			
 		}else {
 			
-			System.out.println("not validated");
+//			System.out.println("not validated");
 			
 			out.append("<center><h2 style=\"color: red;\">warning : Data doesn't match</h2></center>");
 			//request.getRequestDispatcher("admin/forgot_password.jsp").include(request, response);

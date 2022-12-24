@@ -221,7 +221,7 @@ public class data {
             s.setString(3, nickname);
             s.setString(4, DOB);
 
-            System.out.println(s.toString());
+//            System.out.println(s.toString());
 
             rs = s.executeQuery();
 
@@ -231,7 +231,7 @@ public class data {
                 p.setUser_id(rs.getInt("s.id"));
                 p.setEmail(rs.getString("s.email"));
 
-                System.out.println("id is " + p.user_id + "email is " + p.email);
+//                System.out.println("id is " + p.user_id + "email is " + p.email);
 
                 break;
 
@@ -294,7 +294,7 @@ public class data {
 
     public static boolean validate(String email, String password) {
 
-        System.out.println("Email : " + email + " Password : " + password);
+//        System.out.println("Email : " + email + " Password : " + password);
 
         user p = data.get_person(email, password);
 
@@ -347,12 +347,12 @@ public class data {
 
         if (p == null || p.email == null) {
 
-            System.out.println("available");
+//            System.out.println("available");
             return true;
 
         } else {
 
-            System.out.println("not available");
+//            System.out.println("not available");
             return false;
 
         }

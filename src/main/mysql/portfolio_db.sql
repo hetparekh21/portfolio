@@ -92,32 +92,6 @@ CREATE TABLE IF NOT EXISTS `contact_info` (
 
 TRUNCATE TABLE `contact_info`;
 -- --------------------------------------------------------
-
---
--- Table structure for table `education`
---
-
-DROP TABLE IF EXISTS `education`;
-CREATE TABLE IF NOT EXISTS `education` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `school` text DEFAULT NULL,
-  `college` text DEFAULT NULL,
-  `degree` text DEFAULT NULL,
-  `start_date` text DEFAULT NULL,
-  `end_date` text DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `study` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Truncate table before insert `education`
---
-
-TRUNCATE TABLE `education`;
--- --------------------------------------------------------
-
 --
 -- Table structure for table `messages`
 --
@@ -227,13 +201,6 @@ ALTER TABLE `categories`
 --
 ALTER TABLE `contact_info`
   ADD CONSTRAINT `contact_info_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
-
---
--- Constraints for table `education`
---
-ALTER TABLE `education`
-  ADD CONSTRAINT `education_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
-
 --
 -- Constraints for table `messages`
 --

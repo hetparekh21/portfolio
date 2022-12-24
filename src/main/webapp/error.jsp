@@ -137,7 +137,7 @@
 				<h1>Oops!</h1>
 				<h2>Something went wrong</h2>
 			</div>
-			<a href="index.jsp">Go TO Homepage</a>
+			<a href="/portfolyio/admin/index.jsp">Go TO Homepage</a>
 		</div>
 	</div>
 

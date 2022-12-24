@@ -41,7 +41,7 @@ public class login_filter extends HttpFilter implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		System.out.println("calling filter");
+        /* System.out.println("calling filter"); */
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response ;
 		
@@ -59,20 +59,20 @@ public class login_filter extends HttpFilter implements Filter {
 
 					// set attribute
 
-					System.out.println(user_id);
+                    /* System.out.println(user_id); */
 
 					user u = data.get_person(Integer.parseInt(user_id));
 
 					sc.setAttribute("user", u);
-					System.out.println("User id is " + u.user_id);
+//					System.out.println("User id is " + u.user_id);
 					sc.setAttribute("user_id", u.user_id);
 					sc.setAttribute("username", u.name);
-					System.out.println("username is ");
+//					System.out.println("username is ");
 
 					user_cookie_found = true;
 
 					// pass the request along the filter chain i.e index.jsp
-					System.out.println("end");
+//					System.out.println("end");
 					chain.doFilter(request, response);
 
 				}
@@ -81,7 +81,7 @@ public class login_filter extends HttpFilter implements Filter {
 
 			if (!user_cookie_found) {
 
-				System.out.println("redirect to login 1");
+//				System.out.println("redirect to login 1");
 				res.sendRedirect("login.jsp");
                 /* req.getRequestDispatcher("login.jsp").forward(req, response); */
 
@@ -89,7 +89,7 @@ public class login_filter extends HttpFilter implements Filter {
 
 		} else {
 
-			System.out.println("redirect to login 2");
+//			System.out.println("redirect to login 2");
 			res.sendRedirect("login.jsp");
             /* req.getRequestDispatcher("login.jsp").forward(req, response); */
 

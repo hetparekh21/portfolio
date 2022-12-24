@@ -360,8 +360,8 @@ footer a {
 
 					data.insert_person(p, true);
 
-					System.out.println("sign_up");
-					System.out.println("Name : " + name + " Email : " + email + " Password : " + password);
+					/* System.out.println("sign_up"); */
+					/* System.out.println("Name : " + name + " Email : " + email + " Password : " + password); */
 
 					user u = data.get_person(email);
 
@@ -374,13 +374,13 @@ footer a {
 
 					// set attribute
 					sc.setAttribute("user", u);
-					System.out.println("User id is " + u.user_id);
+					/* System.out.println("User id is " + u.user_id); */
 					sc.setAttribute("user_id", u.user_id);
 					sc.setAttribute("username", u.name);
-					System.out.println("username is ");
+				    /*System.out.println("username is "); */
 
 					// redirect to user admin panel
-					System.out.println("Redirecting to security page");
+					/* System.out.println("Redirecting to security page"); */
 					response.sendRedirect("security_question.jsp");
 
 				} else {
@@ -399,8 +399,8 @@ footer a {
 				if (data.validate(email, password)) {
 
 					// edirect to user admin panel
-					System.out.println("sign in");
-					System.out.println("Email : " + email + " Password : " + password);
+					/* System.out.println("sign in"); */
+					/* System.out.println("Email : " + email + " Password : " + password); */
 
 					user u = data.get_person(email);
 
@@ -413,10 +413,10 @@ footer a {
 
 					// set attribute
 					sc.setAttribute("user", u);
-					System.out.println("User id is " + u.user_id);
+					/* System.out.println("User id is " + u.user_id); */
 					sc.setAttribute("user_id", u.user_id);
 					sc.setAttribute("username", u.name);
-					System.out.println("username is ");
+					/* System.out.println("username is "); */
 
 					//					request.getRequestDispatcher("dashboard.jsp").include(request, response);
 					response.sendRedirect("index.jsp");

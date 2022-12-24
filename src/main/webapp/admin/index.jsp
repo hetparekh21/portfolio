@@ -3,7 +3,7 @@
     <%@ page isELIgnored = "false" %>
     
     
-    <% System.out.println("Into index page"); %>
+    <%-- <% System.out.println("Into index page"); %> --%>
     
 <jsp:include page="header.jsp" />  
 
