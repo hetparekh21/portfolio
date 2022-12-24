@@ -169,8 +169,6 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#040b14",endCo
 									<ul>
 										<li><i class="bi bi-chevron-right"></i> <strong>Email:</strong>
 											<span><c:out value="${data.email}"></c:out></span></li>
-										<li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong>
-											<span>Available</span></li>
 									</ul>
 								</div>
 							</div>
