@@ -215,7 +215,7 @@ public class data {
             Connection c = connect();
             // creating statement
             PreparedStatement s = c.prepareStatement(
-                    "select s.id, s.email from security_questions sq , user s where s.email = ? and hobby = ? and nickname = ? and DOB = ? and s.id = sq.user_id ;");
+                    "select s.id, s.email, s.username from security_questions sq , user s where s.email = ? and hobby = ? and nickname = ? and DOB = ? and s.id = sq.user_id ;");
             s.setString(1, email);
             s.setString(2, hobby);
             s.setString(3, nickname);
@@ -230,6 +230,8 @@ public class data {
                 p = new user();
                 p.setUser_id(rs.getInt("s.id"));
                 p.setEmail(rs.getString("s.email"));
+                p.setName(rs.getString("s.username"));
+                
 
 //                System.out.println("id is " + p.user_id + "email is " + p.email);
 

@@ -54,8 +54,10 @@ public class reset_password extends HttpServlet {
 		
 		if(data.validate(p)) {
 			
-//			System.out.println("validated");
+			System.out.println(p.user_id + "is id over here");
 			request.getServletContext().setAttribute("user_id", p.user_id);
+			request.getServletContext().setAttribute("user", p);
+			request.getServletContext().setAttribute("username", p.name);
 			cookie = new Cookie("user_id", "" + p.user_id);
             // 604800 secs = week of time
             cookie.setMaxAge(604800);
