@@ -21,37 +21,16 @@
 			about_me_1= "${param.about_me_1}",
 			website = "${param.website}",
 			positions= "${param.positions}",
-			<%
-	if (request.getParameter("about_me_2") != null) {
-		if (!request.getParameter("about_me_2").isBlank() || !request.getParameter("about_me_2").isEmpty()) {
-	%>about_me_2= "${param.about_me_2}",<%
-	}
-	}
-	%>
+			about_me_2= "${param.about_me_2}",
 			projects= ${param.projects}
 		where user_id = ${user_id}
 	</sql:update>
 
-	<c:if test="${count eq \"0\" or  \"null\"}">
-
-		<%
-		if (request.getParameter("about_me_2") != null) {
-			if (!request.getParameter("about_me_2").isBlank() || !request.getParameter("about_me_2").isEmpty()) {
-		%><sql:update dataSource="${db}" var="count">  
+	<c:if test="${count eq \"0\" or  \"null\"}">		
+		<sql:update dataSource="${db}" var="count">  
 			INSERT INTO about(name_ , nationality, about_me_1, about_me_2, website, positions , projects , user_id) VALUES 
 			("${param.name}", "${param.nationality}", "${param.about_me_1}", "${param.about_me_2}", "${param.website}", "${param.positions}" , ${param.projects} ,${user_id} );
 		</sql:update>
-		<%
-		}
-		} else {
-		%>
-		<sql:update dataSource="${db}" var="count">  
-			INSERT INTO about(name_ , nationality, about_me_1, website, positions , projects , user_id) VALUES 
-			("${param.name}", "${param.nationality}", "${param.about_me_1}", "${param.website}", "${param.positions}" , ${param.projects} ,${user_id} );
-		</sql:update>
-		<%
-		}
-		%>
 	</c:if>
 
 </c:if>
@@ -116,7 +95,7 @@
 								<div class="form-group">
 									<label for="about" class=" form-control-label">Website</label>
 									<input type="text" name="website" id="website"
-										value="${rs.rows[0].website}" class="form-control" required
+										value="${rs.rows[0].website}" class="form-control"
 										disabled>
 								</div>
 
