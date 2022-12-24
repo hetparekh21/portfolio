@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,9 +28,18 @@ public class reset_password extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ServletContext s = getServletContext();
+	    ServletContext s = getServletContext();
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
+		Cookie cookie;
+		
+		
+
+	    // setting the user attribute to null
+	    ServletContext context=getServletContext();  
+	    
+	    context.setAttribute("user_id", null);
+	    context.setAttribute("username", null);
 		
 		user u = (user)s.getAttribute("user");
 		
@@ -46,7 +56,11 @@ public class reset_password extends HttpServlet {
 			
 //			System.out.println("validated");
 			request.getServletContext().setAttribute("user_id", p.user_id);
-//			request.getRequestDispatcher("admin/users.jsp").forward(request, response);
+			cookie = new Cookie("user_id", "" + p.user_id);
+            // 604800 secs = week of time
+            cookie.setMaxAge(604800);
+            cookie.setPath("/");
+            response.addCookie(cookie); 
 			response.sendRedirect("admin/users.jsp");
 			
 		}else {
@@ -54,7 +68,6 @@ public class reset_password extends HttpServlet {
 //			System.out.println("not validated");
 			
 			out.append("<center><h2 style=\"color: red;\">warning : Data doesn't match</h2></center>");
-			//request.getRequestDispatcher("admin/forgot_password.jsp").include(request, response);
 			response.sendRedirect("admin/forgot_password.jsp");
 			
 		}
