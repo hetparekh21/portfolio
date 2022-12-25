@@ -124,6 +124,9 @@
 	}
 	} else {
 	%>
+	<center>
+		<h2 style="color: red;">Security question answer not match</h2>
+	</center>
 
 	<div class="container" style="width: 40%; margin-top: 10%;">
 		<div class="card">
