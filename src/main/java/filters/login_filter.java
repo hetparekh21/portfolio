@@ -80,8 +80,8 @@ public class login_filter extends HttpFilter implements Filter {
 			}
 
 			if (!user_cookie_found) {
-
-//				System.out.println("redirect to login 1");
+  
+            //System.out.println("redirect to login 1");
 				res.sendRedirect("login.jsp");
                 /* req.getRequestDispatcher("login.jsp").forward(req, response); */
 
@@ -89,7 +89,7 @@ public class login_filter extends HttpFilter implements Filter {
 
 		} else {
 
-//			System.out.println("redirect to login 2");
+			// System.out.println("redirect to login 2");
 			res.sendRedirect("login.jsp");
             /* req.getRequestDispatcher("login.jsp").forward(req, response); */
 

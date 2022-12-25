@@ -6,6 +6,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <%@ page import="servlet.data" %>
+<%@ page import="servlet.user" %>
 
 <sql:setDataSource var="db" driver="com.mysql.cj.jdbc.Driver"
 	url="${data.url}" user="${data.user}" password="${data.password}" />
@@ -16,7 +17,21 @@
 			INSERT INTO security_questions(hobby, nickname, DOB, user_id) VALUES
 				("${param.q2}", "${param.q1}", "${param.q3}", ${user_id});
 		</sql:update>
-			<% response.sendRedirect("index.jsp"); %>
+			<% 
+			Cookie cookie;
+			ServletContext sc = getServletContext();
+			user p = new user();
+			user u = data.get_person(sc.getAttribute("email").toString());
+
+			// set cookie
+			cookie = new Cookie("user_id", "" + u.user_id);
+			// 604800 secs = week of time
+			cookie.setMaxAge(604800);
+			cookie.setPath("/");
+			response.addCookie(cookie);
+
+		    /*System.out.println("username is "); */
+			response.sendRedirect("index.jsp"); %>
 </c:if>
 
 

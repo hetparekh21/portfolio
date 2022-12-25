@@ -359,26 +359,15 @@ footer a {
 					p.pass = password;
 
 					data.insert_person(p, true);
-
+					user u = data.get_person(email);
 					/* System.out.println("sign_up"); */
 					/* System.out.println("Name : " + name + " Email : " + email + " Password : " + password); */
-
-					user u = data.get_person(email);
-
-					// set cookie
-					cookie = new Cookie("user_id", "" + u.user_id);
-					// 604800 secs = week of time
-					cookie.setMaxAge(604800);
-					cookie.setPath("/");
-					response.addCookie(cookie);
-
-					// set attribute
-					sc.setAttribute("user", u);
+              			// set attribute
+		   			sc.setAttribute("user", u);
 					/* System.out.println("User id is " + u.user_id); */
 					sc.setAttribute("user_id", u.user_id);
 					sc.setAttribute("username", u.name);
-				    /*System.out.println("username is "); */
-
+					sc.setAttribute("email", u.email);
 					// redirect to user admin panel
 					/* System.out.println("Redirecting to security page"); */
 					response.sendRedirect("security_question.jsp");

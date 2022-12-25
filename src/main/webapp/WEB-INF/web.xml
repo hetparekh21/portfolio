@@ -33,10 +33,6 @@
 	</filter-mapping>
 	<filter-mapping>
 		<filter-name>login_filter</filter-name>
-		<url-pattern>/admin/education.jsp</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>login_filter</filter-name>
 		<url-pattern>/admin/about_me.jsp</url-pattern>
 	</filter-mapping>
 	<filter-mapping>
